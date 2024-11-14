@@ -3,11 +3,13 @@
 const express = require('express')
 const app = express();
 
-const path = require('path');
+// const path = require('path');
 
 // Enable Express to understand Json
 app.use(express.json());
-const router = require('./routes')
-app.use('/', router)
+
+const routes = require('./routes')
+
+app.use('/', routes)
 
 module.exports = app;
