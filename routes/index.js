@@ -4,9 +4,9 @@ const express = require('express')
 const router = express.Router();
 
 // Importing Routers
-const routeHome = require('./route-home')
-const routeForm = require('./route-form')
-const routeAdmin = require('./route-admin')
+const routeHome = require('./routeHome')
+const routeForm = require('./routeForm')
+const routeAdmin = require('./routeAdmin')
 
 router.use("/", routeHome)
 router.use("/form", routeForm)
