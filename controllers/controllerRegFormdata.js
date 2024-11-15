@@ -7,6 +7,10 @@ const regUser = async (req, resp ) => {
 
   try{ 
    console.log("let's try execute this... ")
+   if (req.body.ID_ROLE == 7){
+      console.log("Valor enviado foi 7")
+   }
+
    console.log(req.body)
    const { USERNAME, BIRTHDATE, CPF, PHONE, CEP, ID_ROLE, USER_EXAMPLE } = req.body;
    const result = await formHandler({
@@ -27,6 +31,7 @@ const regUser = async (req, resp ) => {
 
 
 }; // end regUser
+
 
 // Exports
 module.exports = regUser;

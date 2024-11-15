@@ -8,4 +8,15 @@ const getRegisters = async (req, resp) => {
    return resp.status(200).send(formData)
 }
 
-module.exports = getRegisters;
+const getRoles = async (req, resp) => {
+   console.log("Controlle getRoles Executed...")
+   roleData = await formHandler.getRolesData()
+   return resp.status(200).send(roleData)
+
+} // End getRoles
+
+
+module.exports = { 
+   getRegisters,
+   getRoles
+};

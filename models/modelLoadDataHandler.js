@@ -1,7 +1,7 @@
 const database = require('./connections')
 
-
-const { modelGetRegistersForm } = require("./queries/formLoadData")
+// Load Queries
+const { modelGetRegistersForm, modelGetRolesValues } = require("./queries/formLoadData")
 
 // Load Form data
 const getRegistersForm = async () => {
@@ -9,7 +9,14 @@ const getRegistersForm = async () => {
     return rows;
 }
 
+// Load Roles data
+const getRolesData = async () => {
+    const [rows] = await database.execute(modelGetRolesValues)
+    return rows;
+
+} // End
 
 module.exports = {
-    getRegistersForm
+    getRegistersForm,
+    getRolesData
 }
