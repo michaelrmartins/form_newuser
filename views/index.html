@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i0.wp.com/www.heaa.com.br/wp-content/uploads/2024/01/FAVICON.jpg?fit=18%2C18&amp;ssl=1" sizes="32x32">
+    <link rel="icon" href="https://i0.wp.com/www.heaa.com.br/wp-content/uploads/2024/01/FAVICON.jpg?fit=18%2C18&amp;ssl=1" sizes="192x192">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script type="text/javascript" src="/assets/javascript/script.js"></script>
+
+    
+    <title>Formulario HEAA</title>
+</head>
+<body>
+    
+    <div class="div-banner">
+        <div class="div-logo">
+            <img src="https://i0.wp.com/www.heaa.com.br/wp-content/uploads/2022/12/HEAA.png?w=621&ssl=1" class="main-logo">
+        </div>
+        <div class="div-banner-text">
+            <p class="banner-heaa-name">BLA BLA BLA BLA BLA </p>
+            <p class="banner-heaa-message">Cadastro de usuário no sistema MV</p>
+        </div>
+    </div>
+        <div class="div-userMessages">
+            <spam id="cpf-check-message"></spam>
+        </div>
+
+        
+    
+    <div class="div-container">
+
+        <div class="div-infos">
+            
+            <div class="div-infos-group">
+                
+                <label for="input-cpf" id="label-cpf">CPF:</label>
+                <input type="text" id="input-cpf" name="input-cpf" maxlength="14" required="true">
+                
+            </div>
+            <div class="div-infos-group">
+                <label for="input-name">Nome:</label>
+                <input type="text" id="input-name" name="input-name" disabled>
+            </div>
+            <div class="div-infos-group">
+                <label for="input-birthdate" >Data de Nascimento:</label>
+                <input type="date" id="input-birthdate" name="input-birthdate" value="2000-01-01" disabled>
+            </div>
+            <div class="div-infos-group">
+                <label for="input-phone">Telefone:</label>
+                <input type="tel" id="input-phone" name="input-phone" disabled>
+            </div>
+            <div class="div-infos-group">
+                <label for="input-email">Email:</label>
+                <input type="email" id="input-email" name="input-email" disabled>
+            </div>
+            <div class="div-infos-group">
+                <label for="input-cep">CEP:</label>
+                <input type="text" id="input-cep" name="input-cep" maxlength="9" disabled>
+            </div>
+
+        <div class="div-extra-infos">
+            <div class="div-infos-group">
+                <label for="input-role" disa>Especialidade:</label>
+                <select name="roles-names" id="role-names" disabled>
+                    <option value="Médico">Médico</option>
+                    <option value="Enfermeiro">Enfermeiro</option>
+                    <option value="Técnico de Enfermagem">Técnico de Enfermagem</option>
+                    <option value="Setor Administrativo">Setor Administrativo</option>
+                </select>
+            </div>
+
+            <div class="div-infos-group">
+                <label for="input-register">N° Conselho:</label>
+                <input type="number" id="input-register" name="input-register" disabled>
+            </div>
+        </div>
+        
+        <!-- <button onclick="enableFields()" draggable="true" onwaiting="3">Ok</button> -->
+
+    </div>
+    <script type="text/javascript" src="/assets/javascript/validarCPF.js"></script>
+    <script type="text/javascript" src="/assets/javascript/functions.js"></script>
+</body>
+</html>
