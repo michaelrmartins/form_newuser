@@ -1,7 +1,9 @@
 // Controller File - regFormData
 
 const formHandler = require('../models/modelRegDataHandler')
+const CreateUpdateQuery = require('../models/modelDinamicCreateUpdateQuery')
 
+// Register new user
 const regUser = async (req, resp ) => {
   try{ 
    // console.log("let's try execute this... ")
@@ -29,11 +31,22 @@ const regUser = async (req, resp ) => {
 
 }; // End regUser
 
-// const updateUser = async (req, resp) =>{
-//    console.log("UpdateUser ...")
-//    console.log(req.params.id)
-// }; // End updateUser
+// Update User
+const updateUser = async (req, resp) =>{
+  try {
+      const userId = req.params.id
+      const data = req.body
+      const condition = {ID: userId}
 
+      const { query, values } = CreateUpdateQuery('form_data', data, condition)
+
+      console.log(query)
+      await database.execute(query, values )
+      return res.status(200).send({message: "Sucess, updated"});
+  } // End Try
+  catch (error) {console.log(error); return resp.status(500).send({error: "Update Error"})}
+
+}; // End updateUser
 
 // Exports
-module.exports = { regUser };
+module.exports = { regUser, updateUser };
