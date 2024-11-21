@@ -3,14 +3,11 @@
 const formHandler = require('../models/modelRegDataHandler')
 
 const regUser = async (req, resp ) => {
-   console.log("I am a Controller...")
-
   try{ 
-   console.log("let's try execute this... ")
-   if (req.body.ID_ROLE == 7){
-      console.log("Valor enviado foi 7")
-   }
-
+   // console.log("let's try execute this... ")
+   // if (req.body.ID_ROLE == 7){
+   //    console.log("Valor enviado foi 7")
+   // }
    console.log(req.body)
    const { USERNAME, BIRTHDATE, CPF, PHONE, CEP, ID_ROLE, USER_EXAMPLE } = req.body;
    const result = await formHandler({
@@ -30,8 +27,13 @@ const regUser = async (req, resp ) => {
 } // try finally
 
 
-}; // end regUser
+}; // End regUser
+
+// const updateUser = async (req, resp) =>{
+//    console.log("UpdateUser ...")
+//    console.log(req.params.id)
+// }; // End updateUser
 
 
 // Exports
-module.exports = regUser;
+module.exports = { regUser };

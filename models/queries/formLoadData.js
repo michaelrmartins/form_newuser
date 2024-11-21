@@ -1,13 +1,20 @@
-const modelGetRegistersForm = `
+const queryGetRegistersForm = `
 SELECT * FROM cadastro_usuarios.form_data; 
 `; // End
 
-const modelGetRolesValuesActive = `
+const queryGetRegistersById = `
+SELECT * FROM cadastro_usuarios.form_data
+where id = ?
+`; // End
+
+const queryGetRolesValuesActive = `
 SELECT * FROM cadastro_usuarios.form_roles
 where ROLE_STATUS = 1
 `; // End
 
+// Module Exports
 module.exports = {
-    modelGetRegistersForm,
-    modelGetRolesValuesActive
+    queryGetRegistersForm,
+    queryGetRegistersById,
+    queryGetRolesValuesActive
 }

@@ -1,22 +1,32 @@
+// Model Load Data
+
 const database = require('./connections')
 
 // Load Queries
-const { modelGetRegistersForm, modelGetRolesValuesActive } = require("./queries/formLoadData")
+const { queryGetRegistersForm, queryGetRegistersById, queryGetRolesValuesActive } = require("./queries/formLoadData")
 
 // Load Form data
-const getRegistersForm = async () => {
-    const [rows] = await database.execute(modelGetRegistersForm)
+const modelGetRegistersForm = async () => {
+    const [rows] = await database.execute(queryGetRegistersForm)
+    return rows;
+}
+
+// Load Register by ID
+const modelGetRegistersById = async (regId) => {
+    const id = regId
+    const [rows] = await database.execute(queryGetRegistersById, [id])
     return rows;
 }
 
 // Load Roles data
-const getRolesData = async () => {
-    const [rows] = await database.execute(modelGetRolesValuesActive)
+const modelGetRolesData = async () => {
+    const [rows] = await database.execute(queryGetRolesValuesActive)
     return rows;
 
 } // End
 
 module.exports = {
-    getRegistersForm,
-    getRolesData
+    modelGetRegistersForm,
+    modelGetRegistersById,
+    modelGetRolesData
 }
