@@ -15,5 +15,8 @@ router.post("/", controllerRegFormData.regUser)
 // Put's
 router.put("/:id", controllerRegFormData.updateUser)
 
+// Delete's 
+router.delete("/:id", controllerRegFormData.deleteUser)
+
 // Export
 module.exports = router;
