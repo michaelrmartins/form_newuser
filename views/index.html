@@ -6,17 +6,17 @@
     <link rel="icon" href="https://i0.wp.com/www.heaa.com.br/wp-content/uploads/2024/01/FAVICON.jpg?fit=18%2C18&amp;ssl=1" sizes="32x32">
     <link rel="icon" href="https://i0.wp.com/www.heaa.com.br/wp-content/uploads/2024/01/FAVICON.jpg?fit=18%2C18&amp;ssl=1" sizes="192x192">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script type="text/javascript" src="assets/javascript/script.js"></script>
+    
     <title>Formulario HEAA</title>
 </head>
-<body>
+<body onload="populateDropdown()">
     
     <div class="div-banner">
         <div class="div-logo">
             <img src="https://i0.wp.com/www.heaa.com.br/wp-content/uploads/2022/12/HEAA.png?w=621&ssl=1" class="main-logo">
         </div>
         <div class="div-banner-text">
-            <p class="banner-heaa-name">BLA BLA BLA BLA BLA </p>
+            <p class="banner-heaa-name">Hospital Escola Alvaro Alvim </p>
             <p class="banner-heaa-message">Cadastro de usuário no sistema MV</p>
         </div>
     </div>
@@ -59,13 +59,21 @@
 
         <div class="div-extra-infos">
             <div class="div-infos-group">
-                <label for="input-role" disa>Especialidade:</label>
+
+                <body onload="populateDropdown()">
+                    <label for="roleDropDown">Especialidade:</label>
+                    <select name="roles-names" id="role-names" disabled>
+                        <option value="">Escolha uma Atividade</option>
+                    </select>
+                <!-- <label for="input-role" disa>Especialidade:</label>
                 <select name="roles-names" id="role-names" disabled>
                     <option value="Médico">Médico</option>
                     <option value="Enfermeiro">Enfermeiro</option>
                     <option value="Técnico de Enfermagem">Técnico de Enfermagem</option>
                     <option value="Setor Administrativo">Setor Administrativo</option>
-                </select>
+                </select> -->
+
+
             </div>
 
             <div class="div-infos-group">
@@ -75,9 +83,15 @@
         </div>
         
         <!-- <button onclick="enableFields()" draggable="true" onwaiting="3">Ok</button> -->
+         <div class="div-send-button">
+            <button class="sendButton" id="sendButton">Enviar</button>
+         </div>
 
     </div>
+    <script type="text/javascript" src="assets/javascript/script.js"></script>
     <script type="text/javascript" src="assets/javascript/validarCPF.js"></script>
     <script type="text/javascript" src="assets/javascript/functions.js"></script>
+    <script type="text/javascript" src="assets/javascript/populateFrontEnd.js"></script>
+    <script type="text/javascript" src="assets/javascript/sanitizer.js"></script>
 </body>
 </html>

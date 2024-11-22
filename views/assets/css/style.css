@@ -104,6 +104,25 @@ font-size: 2vw;
     margin-top: 30px;
 }
 
+.div-send-button {
+    margin-top: 25px;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+
+}
+
+.sendButton {
+    
+    font-weight: 500;
+    height: 30px;
+    width: 100px;
+    background-color: rgba(43, 255, 0, 0.719);
+    border: none;
+    border-radius: 20px;
+    color:rgb(0, 0, 0)
+}
+
 #input-cpf{
    
     margin-bottom: 40px;
@@ -120,9 +139,8 @@ font-size: 2vw;
 }
 
 input{
-
     padding-left: 10px;
-    background-color: rgb(213, 218, 218);
+    background-color: rgba(208, 209, 209, 0.973);
     border-radius: 10px;
     border: none;
     border-style: hidden;
@@ -134,7 +152,8 @@ input{
 }
 
 input:disabled{
-    background-color: rgba(126, 126, 128, 0.384);
+    /* cursor: none; */
+    background-color: rgba(0, 0, 0, 0.397);
 }
 
 input:focus{
