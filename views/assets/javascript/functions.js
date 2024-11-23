@@ -1,4 +1,4 @@
-// Seleciona o campo de CPF
+  // / ********* CPF FIELD LISTENER ************ \ \\
 const cpfInput = document.getElementById('input-cpf');
         
 // Adiciona um listener para o evento de input
@@ -29,7 +29,6 @@ cpfInput.addEventListener('input', function(event) {
     event.target.value = formattedValue;
 });
 
-
 document.getElementById('input-cpf').addEventListener('input', function(e) {
     var value = e.target.value;
     var cpfPattern = value.replace(/\D/g, '') // Remove qualquer coisa que não seja número
@@ -39,3 +38,52 @@ document.getElementById('input-cpf').addEventListener('input', function(e) {
                           .replace(/(-\d{2})\d+?$/, '$1'); // Impede entrada de mais de 11 dígitos
     e.target.value = cpfPattern;
   });
+
+  // / ********* CEP FIELD LISTENER ************ \ \\
+const cepInput = document.getElementById('input-cep');
+
+// Adiciona um listener para o evento de input
+cepInput.addEventListener('input', function(event) {
+    // Remove qualquer caracter que não seja número
+    let inputValue = event.target.value.replace(/\D/g, '');
+
+
+    console.log("cep...")
+    // Limita o número máximo de dígitos para o CEP (8 dígitos)
+    inputValue = inputValue.slice(0, 8);
+
+    // Formata o valor no padrão XXXXX-XXX
+    const formattedValue = inputValue.replace(/(\d{5})(\d)/, '$1-$2');
+
+    // Atualiza o valor do campo
+    event.target.value = formattedValue;
+});
+
+  // / ********* PHONE FIELD LISTENER ************ \ \\
+const phoneInput = document.getElementById('input-phone');
+
+phoneInput.addEventListener('input', function(event) {
+    // Remove qualquer caracter que não seja número
+    let inputValue = event.target.value.replace(/\D/g, '');
+
+    // Limita o número máximo de dígitos (11 dígitos para celular com DDD)
+    inputValue = inputValue.slice(0, 11);
+
+    // MASK TO >> (XX) XXXXX-XXXX
+    const formattedValue = inputValue
+        .replace(/^(\d{2})(\d)/, '($1) $2') // Adiciona parênteses no DDD
+        .replace(/(\d{5})(\d)/, '$1-$2');  // Adiciona traço após os 5 primeiros números do telefone
+
+    // Update field value
+    event.target.value = formattedValue;
+});
+
+
+  // / ********* EMAIL FIELD TEST ************ \ \\
+function emailIsValid(email){
+
+    if(validateEmail(email)){
+        showMessage('cpf-check-message', '')
+        console.log("Email Válido!!")
+    } else {showMessage('cpf-check-message', 'Email Inválido')}
+}
