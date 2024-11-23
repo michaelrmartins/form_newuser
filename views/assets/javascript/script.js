@@ -12,8 +12,6 @@ function enableFields () {
 function showMessage(parameterField, textMessage) {
     console.log(parameterField)
     console.log(textMessage)
-    // const parameterField = parameterField;
-    // const textMessage = textMessage;
     document.getElementById(parameterField).innerHTML = textMessage
 }
 
@@ -53,11 +51,22 @@ document.getElementById('sendButton').addEventListener('click', function() {
     .then(response => response.json())
     .then(data => {
         // Handle backend response
-        console.log('Sucesso:', data);
-        alert('Dados enviados com sucesso!');
+        // console.log('Sucesso:', data);
+        // alert('Dados enviados com sucesso!');
+        if(data.error){
+            console.log("ocorreu um erro:", data)
+            alert(data.error.code + "\n" + data.error.message)
+        } else {
+            console.log("Cadastro realizado com sucesso")
+            alert("Cadastro Realizado!!")
+            window.location.reload()
+
+        } // End Else
+
+
     })
     .catch(error => {
         console.error('Erro:', error);
-        alert('Ocorreu um erro ao enviar os dados.');
+        alert('FATAL - Ocorreu um erro ao enviar os dados. \nBACKEND ERROR\n\n' + error);
     });
 });
