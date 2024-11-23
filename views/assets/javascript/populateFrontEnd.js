@@ -9,7 +9,7 @@ async function populateDropdown() {
 
         roleDropDown = document.getElementById('role-names')
 
-        // Write data on Drodown
+        // Write data on Dropdown
         roleValues.forEach( roleValue => {
             console.log(roleValue.ID)
             console.log(roleValue.ROLE_NAME)
