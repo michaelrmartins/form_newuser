@@ -41,7 +41,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
     const jsonData = JSON.stringify(formData);
 
    
-    fetch('http://192.168.2.214:8055/form', {
+    fetch('http://192.168.2.214:8059/form', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

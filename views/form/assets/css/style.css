@@ -1,0 +1,149 @@
+/* Estilos globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Container principal */
+.div-container {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #f9f9f9;
+    padding: 20px 10px;
+}
+
+/* Banner */
+.div-banner {
+    width: 100%;
+    height: 15vh;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.div-logo {
+    display: flex;
+    align-items: center;
+}
+
+.main-logo {
+    width: 120px;
+    height: auto;
+}
+
+.div-banner-text {
+    text-align: center;
+    flex: 1;
+    margin-left: 20px;
+}
+
+.banner-heaa-name {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.banner-heaa-message {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Mensagens */
+.div-userMessages {
+    margin: 10px 0;
+    text-align: center;
+}
+
+#cpf-check-message {
+    font-size: 0.9rem;
+    color: #e30b0b;
+}
+
+/* Formulário */
+.div-infos {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.div-infos-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: all 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #007bff;
+    background-color: #ffffff;
+    outline: none;
+}
+
+input:disabled,
+select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Botão */
+.div-send-button {
+    display: flex;
+    justify-content: center;
+}
+
+.sendButton {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.sendButton:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .banner-heaa-name {
+        font-size: 1.5rem;
+    }
+
+    .banner-heaa-message {
+        font-size: 1rem;
+    }
+}

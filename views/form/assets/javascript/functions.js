@@ -85,5 +85,8 @@ function emailIsValid(email){
     if(validateEmail(email)){
         showMessage('cpf-check-message', '')
         console.log("Email Válido!!")
-    } else {showMessage('cpf-check-message', 'Email Inválido')}
+    } else {showMessage('cpf-check-message', 'Email Inválido')
+            // Scroll page to up 
+            window.scrollTo(0, 0);
+    }
 }
