@@ -3,6 +3,7 @@
 const express = require('express')
 const cors = require('cors');
 const app = express();
+const path = require('path')
 
 // const path = require('path');
 
@@ -15,6 +16,13 @@ app.use(cors());
 //     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
 //     allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
 // }));
+
+// View Pages Routes / Form
+app.use("/", express.static(path.join(__dirname, 'views', 'form')))
+
+// View Pages Routes / Admin
+app.use("/admin", express.static(path.join(__dirname, 'views', 'admin')))
+
 
 // Enable Express to understand Json
 app.use(express.json());
