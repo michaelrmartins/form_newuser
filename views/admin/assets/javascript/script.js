@@ -1,23 +1,13 @@
 // Main Javascript File.
 
-const formApiURL = "http://192.168.2.214:8059/form"
+const formApiURL = "http://192.168.2.214:8059/api/form"
 
 // Load data
 async function getApiDataForm(){
     const formRawData = await fetch(`${formApiURL}`).then(response => response.json())
     updateScreenValues(formRawData)
-    console.table(formRawData);
+    // console.table(formRawData);
 }
-
-
-// function updateScreenValues(data){
-//     data.forEach(USERNAME => {
-//         document.getElementById('username').innerHTML = data.USERNAME
-        
-//     });
-//     // document.getElementById('username').innerHTML = data
-
-// }
 
 
 
@@ -35,39 +25,48 @@ function updateScreenValues(users) {
         <thead>
             <tr>
                 <th>Nome</th>
+                <th>Nome da Mãe</th>
                 <th>CPF</th>
                 <th>Data de Nascimento</th>
                 <th>Telefone</th>
                 <th>CEP</th>
+                <th>Email</th>
                 <th>Especialidade</th>
                 <th>Status</th>
-                <th>Primemiro login</th>
+                <th>Primeiro login</th>
             </tr>
         </thead>
     `;
     table.innerHTML = headerRow;
 
-    // Cria o corpo da tabela
+    // Table body
     const tbody = document.createElement('tbody');
 
     users.forEach(user => {
+        const isCreatedClass = user.IS_CREATED == 'Feito' ? 'status-done' : 'status-pending';
+        const isfirstloginClass = user.IS_FIRST_LOGIN == 'Feito' ? 'status-done' : 'status-pending';
+        // console.log(user.IS_CREATED, user.IS_FIRST_LOGIN)
+        // console.log(isCreatedClass, isfirstloginClass)
+
         const row = `
             <tr>
-                <td>${user.USERNAME}</td>
+                <td id="td-username">${user.USERNAME}</td>
+                <td class="mother-name">${user.MOTHER_NAME}</td>
                 <td>${user.CPF}</td>
-                <td>${new Date(user.BIRTHDATE).toLocaleDateString()}</td>
+                <td>${new Date(user.BIRTHDATE).toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: 'numeric'})}</td>
                 <td>${user.PHONE}</td>
                 <td>${user.CEP}</td>
-                <td>${user.ID_ROLE}</td>
-                <td>${user.IS_CREATED}</td>
-                <td>${user.IS_FIRST_LOGIN}</td>
+                <td>${user.EMAIL}</td>
+                <td>${user.ROLE_NAME}</td>
+                <td class="${isCreatedClass}">${user.IS_CREATED}</td>
+                <td class="${isfirstloginClass}">${user.IS_FIRST_LOGIN}</td>
 
             </tr>
         `;
         tbody.innerHTML += row;
     });
 
-    table.appendChild(tbody); // Adiciona o corpo à tabela
-    container.appendChild(table); // Adiciona a tabela ao container
+    table.appendChild(tbody); 
+    container.appendChild(table); 
 }
 

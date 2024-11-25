@@ -6,6 +6,57 @@
     text-align: left;
 }
 
+/* Main Menu */
+.div-container-top-menu {
+    border-radius: 10px;
+    width: 23%;
+    /* height: 50px; */
+    display: flex;
+    flex-direction: row;
+    /* background-color: #b6b9b9; */
+
+}
+
+.p-menu {
+    text-align: center;
+    border-right: 30px;
+    padding: 6px;
+    background-color: #b6b9b9;
+    user-select: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding-left: 20px;
+}
+
+
+.p-menu:hover{
+    color: #fafafa;
+    background-color: #161815;
+    }
+
+.p-menu:active{
+    color: rgb(255, 255, 255);
+}
+
+/* Main Form Data */
+.status-pending {
+    font-weight: 600;
+    color: #f4f4f4;
+    text-align: center;
+    /* color:#000000; */
+    background-color:rgb(148, 11, 27);
+}
+
+.status-done{
+    font-weight: 600;
+    color: #f4f4f4;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(43, 112, 34);
+
+}
+
 .user-table th, .user-table td {
     border: 1px solid #ddd;
     padding: 6px;
@@ -24,4 +75,14 @@
 
 .user-table tr:hover {
     background-color: #f1f1f1;
+}
+
+
+#td-username {
+    text-transform: capitalize;
+}
+
+
+.mother-name {
+    text-transform: capitalize;
 }
