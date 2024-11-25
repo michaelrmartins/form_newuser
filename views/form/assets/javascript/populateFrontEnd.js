@@ -2,7 +2,7 @@ async function populateDropdown() {
     try{
 
         // Get data from API
-        const roleDataFromDatabase = await fetch('http://192.168.2.214:8059/roles');
+        const roleDataFromDatabase = await fetch('http://192.168.2.214:8059/api/roles');
         const roleValues = await roleDataFromDatabase.json();
 
         console.log(roleValues);

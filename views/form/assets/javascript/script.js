@@ -32,6 +32,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
         USERNAME: document.getElementById('input-name').value,
         BIRTHDATE: sanitizedBirthdate,
         PHONE: document.getElementById('input-phone').value,
+        MOTHER_NAME: document.getElementById('input-mother-name').value,
         EMAIL: document.getElementById('input-email').value,
         CEP: sanitizedCep,
         ID_ROLE: document.getElementById('role-names').value,
@@ -41,7 +42,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
     const jsonData = JSON.stringify(formData);
 
    
-    fetch('http://192.168.2.214:8059/form', {
+    fetch('http://192.168.2.214:8059/api/form', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
