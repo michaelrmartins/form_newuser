@@ -15,9 +15,9 @@ app.use(cors(
 ));
 
 // app.use(cors({
-//     origin: 'http://seu-frontend.com', // Origem permitida (por exemplo, o domínio do seu frontend)
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
-//     allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
+//     origin: 'http://seu-frontend.com',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+//     allowedHeaders: ['Content-Type', 'Authorization'], 
 // }));
 
 // View Pages Routes / Form
