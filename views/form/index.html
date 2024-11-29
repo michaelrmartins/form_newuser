@@ -25,6 +25,9 @@
         <div class="div-userMessages">
             <spam id="cpf-check-message"></spam>
         </div>
+        <!-- Debug button - remove  -->
+        <!-- <button onclick="checkCpfIsWaitingToCreate('93444323433')">TESTE</button> -->
+
     <div class="div-container">
 
         <div class="div-infos">
@@ -69,7 +72,7 @@
                 <!-- <body onload="populateDropdown()"> -->
                     <label for="roleDropDown">Especialidade:</label>
                     <select name="roles-names" id="role-names" disabled>
-                        <option value="">Escolha uma Atividade</option>
+                        <option id="role-options" value="">Escolha uma Atividade</option>
                     </select>
                 <!-- <label for="input-role" disa>Especialidade:</label>
                 <select name="roles-names" id="role-names" disabled>
@@ -81,7 +84,7 @@
             </div>
 
             <div class="div-infos-group">
-                <label for="input-register">N° Conselho:</label>
+                <label for="input-register">N° Conselho<spam id="licence-type"></spam>:</label>
                 <input type="number" id="input-register" min="0" name="input-register" disabled>
             </div>
         </div>
