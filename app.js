@@ -8,8 +8,11 @@ const path = require('path')
 // const path = require('path');
 
 // TEMPORARY !! --- DANGER -- REMOVE IN PRODUCTION
-app.use(cors());
-
+app.use(cors(
+    {
+        origin: '*'
+    }
+));
 
 // app.use(cors({
 //     origin: 'http://seu-frontend.com', // Origem permitida (por exemplo, o domínio do seu frontend)
