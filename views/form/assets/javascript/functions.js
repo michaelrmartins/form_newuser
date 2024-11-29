@@ -2,19 +2,25 @@
 const cpfInput = document.getElementById('input-cpf');
         
 // Adiciona um listener para o evento de input
-cpfInput.addEventListener('input', function(event) {
+cpfInput.addEventListener('input', async function(event) {
     // Remove qualquer caracter que não seja número
     const inputValue = event.target.value.replace(/\D/g, '');
     
     // Chama a função validaCPF() para verificar se o CPF é válido
     if (validaCPF(inputValue)) {
-        console.log('CPF válido');
+        // console.log('CPF válido');
         showMessage('cpf-check-message', '')
-        enableFields ()
+        if( await checkCpfIsWaitingToCreate(inputValue)){
+            alert("Já existe uma solicitação para este CPF, em breve entraremos em contato")
+            console.log("CPF já Cadastrado...")
+        } else {console.log("Permitido Enviar Cadastro")
+                enableFields ()}
+
+        // enableFields ()
         // changeFieldStyle('input-cpf')
     } else {
         const valuesElement = document.getElementById('input-cpf');
-        console.log(valuesElement.value.length)
+        // console.log(valuesElement.value.length)
         if(valuesElement.value.length == 14){
             console.log('CPF inválido');
         showMessage('cpf-check-message', 'CPF Inválido')
@@ -42,7 +48,7 @@ document.getElementById('input-cpf').addEventListener('input', function(e) {
   // / ********* CEP FIELD LISTENER ************ \ \\
 const cepInput = document.getElementById('input-cep');
 
-// Adiciona um listener para o evento de input
+// Listener
 cepInput.addEventListener('input', function(event) {
     // Remove qualquer caracter que não seja número
     let inputValue = event.target.value.replace(/\D/g, '');
@@ -59,6 +65,50 @@ cepInput.addEventListener('input', function(event) {
     event.target.value = formattedValue;
 });
 
+
+// // / ********* LICENCE TYPE LISTENER ************ \ \\
+const licenceUserSelect = document.getElementById('role-names');
+
+licenceUserSelect.addEventListener('change', async (event) => {
+    console.log("Event licenceUserSelect")
+    const licenceUserSelectValue = await parseInt(event.target.value)
+    
+    // Get data from API
+    const roleDataFromDatabase = await fetch('http://192.168.2.214:8059/api/roles');
+    const jsonRoleValues = await roleDataFromDatabase.json();
+
+    // Filter Id using value sended by user
+    let roleLicence = await jsonRoleValues
+        .filter(filtered => filtered.ID === licenceUserSelectValue)
+        // console.log(licenceUserSelectValue + licenceUserSelectValue)
+    
+    // Map Value and return only value == sended by user
+    let roleLicenceName = roleLicence.map(licence => licence.LICENCE_TYPE)
+
+    console.log("roleLicenceName:", roleLicenceName);
+    console.log(roleLicenceName.length)
+
+    if(roleLicenceName.length === 0 || roleLicenceName.every(value => value === null)){
+         // Insert data on frontend when data is Null
+        document.getElementById('licence-type').innerHTML = ""
+        console.log("Null Value")
+
+    } else {        
+        // Insert data on frontend
+        document.getElementById('licence-type').innerHTML = " (" + roleLicenceName + ")"
+        console.log("Value received!!")}
+
+
+    // console.log(roleLicence)
+    console.log(roleLicenceName)
+
+    // console.log(roleValues)
+    console.log("User Value:" + licenceUserSelectValue)
+})
+
+
+
+
   // / ********* PHONE FIELD LISTENER ************ \ \\
 const phoneInput = document.getElementById('input-phone');
 
@@ -71,8 +121,8 @@ phoneInput.addEventListener('input', function(event) {
 
     // MASK TO >> (XX) XXXXX-XXXX
     const formattedValue = inputValue
-        .replace(/^(\d{2})(\d)/, '($1) $2') // Adiciona parênteses no DDD
-        .replace(/(\d{5})(\d)/, '$1-$2');  // Adiciona traço após os 5 primeiros números do telefone
+        .replace(/^(\d{2})(\d)/, '($1) $2') // (XX) DDD Mask
+        .replace(/(\d{5})(\d)/, '$1-$2');  // Phone mask "-"
 
     // Update field value
     event.target.value = formattedValue;
@@ -90,3 +140,28 @@ function emailIsValid(email){
             window.scrollTo(0, 0);
     }
 }
+
+  // / ********* CHECK CPF EXISTS IN DATABASE ************ \ \\
+async function checkCpfIsWaitingToCreate(inputCpfValue){
+    try {
+        const rawCpfData = await fetch('http://192.168.2.214:8059/api/form')
+        const jsonCpfData = await rawCpfData.json()
+        
+        let pendentesList = jsonCpfData
+            .filter(filtered => filtered.IS_CREATED === "Pendente")
+            .filter(filtered => filtered.IS_FIRST_LOGIN === "Pendente")
+
+        let mappedValues = pendentesList.map(cpfValue => cpfValue.CPF)
+            
+            // console.table(inputCpfValue)
+            // console.table(mappedValues)
+        
+        // Check input value and compare with mapped values | Return true or False
+        const isCpfIncludes = mappedValues.includes(inputCpfValue)
+        console.log(isCpfIncludes)
+        return isCpfIncludes;
+
+    } // End Try
+    catch(error) {console.error(error)}
+
+} //End getCpfListWaitingCreate function
