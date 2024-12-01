@@ -1,5 +1,5 @@
 const queryGetRegistersForm = `
-SELECT
+SELECT 
     form.ID,
     form.USERNAME,
     form.CPF,
@@ -8,6 +8,8 @@ SELECT
     form.PHONE,
     form.CEP,
     form.EMAIL,
+    form.ID_DEPARTMENT,
+    departments.NAME AS DEPARTMENT_NAME,
     form.ID_ROLE,
     roles.ROLE_NAME,
     CASE
@@ -23,8 +25,11 @@ SELECT
 FROM
     cadastro_usuarios.form_data form
         LEFT JOIN
-    cadastro_usuarios.form_roles roles ON form.ID_ROLE = roles.ID 
-where form.ARCHIVED = 0 
+    cadastro_usuarios.form_roles roles ON form.ID_ROLE = roles.ID
+        LEFT JOIN
+    cadastro_usuarios.form_departments departments ON form.ID_DEPARTMENT = departments.ID
+WHERE
+    form.ARCHIVED = 0
 `; // End
 
 const queryGetRegistersById = `
@@ -37,9 +42,14 @@ SELECT * FROM cadastro_usuarios.form_roles
 where ROLE_STATUS = 1
 `; // End
 
+const queryGetDepartments = `
+SELECT * FROM cadastro_usuarios.form_departments;
+`; // End
+
 // Module Exports
 module.exports = {
     queryGetRegistersForm,
     queryGetRegistersById,
-    queryGetRolesValuesActive
+    queryGetRolesValuesActive,
+    queryGetDepartments
 }

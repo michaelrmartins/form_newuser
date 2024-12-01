@@ -3,7 +3,7 @@
 const database = require('./connections')
 
 // Load Queries
-const { queryGetRegistersForm, queryGetRegistersById, queryGetRolesValuesActive } = require("./queries/formLoadData")
+const { queryGetRegistersForm, queryGetRegistersById, queryGetRolesValuesActive, queryGetDepartments } = require("./queries/formLoadData")
 
 // Load Form data
 const modelGetRegistersForm = async () => {
@@ -22,11 +22,18 @@ const modelGetRegistersById = async (regId) => {
 const modelGetRolesData = async () => {
     const [rows] = await database.execute(queryGetRolesValuesActive)
     return rows;
-
 } // End
+
+// Load Departments data
+const modelGetDepartmentsData = async () => {
+    const [rows] = await database.execute(queryGetDepartments)
+    return rows;
+} // End
+
 
 module.exports = {
     modelGetRegistersForm,
     modelGetRegistersById,
-    modelGetRolesData
+    modelGetRolesData,
+    modelGetDepartmentsData
 }

@@ -9,7 +9,7 @@ const { modelDeleteUser } = require('../models/modelDeleteDataHandler')
 const regUser = async (req, resp ) => {
   try{ 
    console.log(req.body)
-   const { USERNAME, BIRTHDATE, CPF, MOTHER_NAME, PHONE, EMAIL, CEP, ID_ROLE, USER_EXAMPLE } = req.body;
+   const { USERNAME, BIRTHDATE, CPF, MOTHER_NAME, PHONE, EMAIL, CEP, ID_ROLE, ID_DEPARTMENT, USER_EXAMPLE } = req.body;
    const result = await formHandler({
        username: USERNAME,
        birthdate: BIRTHDATE || null,
@@ -19,6 +19,7 @@ const regUser = async (req, resp ) => {
        email: EMAIL || null,
        cep: CEP || null,
        id_role: ID_ROLE,
+       id_department: ID_DEPARTMENT,
        user_example: USER_EXAMPLE || null
    });
    return resp.status(201).json({message: `message:User Registred Successfully`, result})
