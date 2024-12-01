@@ -1,6 +1,6 @@
 function enableFields () {
-    console.log("cliked...")
-    const inputList = document.querySelectorAll("input, select");
+    // console.log("cliked...")
+    const inputList = document.querySelectorAll("input, select, button");
     console.dir(inputList);
     inputList.forEach(id => {
         id.removeAttribute("disabled")
@@ -35,12 +35,14 @@ document.getElementById('sendButton').addEventListener('click', function() {
         MOTHER_NAME: document.getElementById('input-mother-name').value,
         EMAIL: document.getElementById('input-email').value,
         CEP: sanitizedCep,
+        ID_DEPARTMENT: document.getElementById('departments-names').value,
         ID_ROLE: document.getElementById('role-names').value,
         REGISTERNUMBER: document.getElementById('input-register').value,
     };
 
     const jsonData = JSON.stringify(formData);
 
+    console.log(jsonData)
    
     fetch('http://192.168.2.214:8059/api/form', {
         method: 'POST',

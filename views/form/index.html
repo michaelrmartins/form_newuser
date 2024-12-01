@@ -69,18 +69,17 @@
         <div class="div-extra-infos">
             <div class="div-infos-group">
 
-                <!-- <body onload="populateDropdown()"> -->
+                    <!-- Dropdown for Departments  -->
+                    <label for="departmentsDropDown">Setor:</label>
+                    <select name="departments-names" id="departments-names" disabled>
+                        <option id="departments-options" value="">Escolha um Setor</option>
+                    </select> <br>
+                
+                    <!-- Dropdown for roles  -->
                     <label for="roleDropDown">Especialidade:</label>
                     <select name="roles-names" id="role-names" disabled>
-                        <option id="role-options" value="">Escolha uma Atividade</option>
+                        <option id="role-options" value="">Escolha uma Especialidade</option>
                     </select>
-                <!-- <label for="input-role" disa>Especialidade:</label>
-                <select name="roles-names" id="role-names" disabled>
-                    <option value="Médico">Médico</option>
-                    <option value="Enfermeiro">Enfermeiro</option>
-                    <option value="Técnico de Enfermagem">Técnico de Enfermagem</option>
-                    <option value="Setor Administrativo">Setor Administrativo</option>
-                </select> -->
             </div>
 
             <div class="div-infos-group">
@@ -91,7 +90,7 @@
         
         <!-- <button onclick="enableFields()" draggable="true" onwaiting="3">Ok</button> -->
          <div class="div-send-button">
-            <button class="sendButton" id="sendButton">Enviar</button>
+            <button class="sendButton" id="sendButton" disabled>Enviar</button>
          </div>
 
     </div>

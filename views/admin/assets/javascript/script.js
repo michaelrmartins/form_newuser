@@ -31,6 +31,7 @@ function updateScreenValues(users) {
                 <th>Telefone</th>
                 <th>CEP</th>
                 <th>Email</th>
+                <th>Setor</th>
                 <th>Especialidade</th>
                 <th>Status</th>
                 <th>Primeiro login</th>
@@ -57,6 +58,7 @@ function updateScreenValues(users) {
                 <td>${user.PHONE}</td>
                 <td>${user.CEP}</td>
                 <td>${user.EMAIL}</td>
+                <td>${user.DEPARTMENT_NAME}</td>
                 <td>${user.ROLE_NAME}</td>
                 <td class="${isCreatedClass}">${user.IS_CREATED}</td>
                 <td class="${isfirstloginClass}">${user.IS_FIRST_LOGIN}</td>
