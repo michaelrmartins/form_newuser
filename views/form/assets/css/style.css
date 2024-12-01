@@ -65,10 +65,21 @@
     text-align: center;
 }
 
-#cpf-check-message {
+.userMessageField  {
     font-size: 0.9rem;
     color: #e30b0b;
 }
+
+.cepDataMessageField {
+    font-style: italic;
+    color: #555;
+    font-size:12px;
+}
+
+/* #cpf-check-message {
+    font-size: 0.9rem;
+    color: #e30b0b;
+} */
 
 /* form */
 .div-infos {
