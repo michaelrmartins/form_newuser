@@ -40,10 +40,13 @@ where id = ?
 const queryGetRolesValuesActive = `
 SELECT * FROM cadastro_usuarios.form_roles
 where ROLE_STATUS = 1
+order by ROLE_NAME ASC
 `; // End
 
 const queryGetDepartments = `
-SELECT * FROM cadastro_usuarios.form_departments;
+SELECT * FROM cadastro_usuarios.form_departments
+order by NAME asc
+
 `; // End
 
 // Module Exports
