@@ -14,6 +14,7 @@ cpfInput.addEventListener('input', async function(event) {
             alert("Já existe uma solicitação para este CPF, em breve entraremos em contato")
             console.log("CPF já Cadastrado...")
         } else {console.log("Permitido Enviar Cadastro")
+                showMessage("cpf-check-message", "✅")
                 enableFields ()}
 
         // enableFields ()
@@ -49,7 +50,7 @@ document.getElementById('input-cpf').addEventListener('input', function(e) {
 const cepInput = document.getElementById('input-cep');
 
 // Listener
-cepInput.addEventListener('input', function(event) {
+cepInput.addEventListener('input', async function(event) {
     // Remove qualquer caracter que não seja número
     let inputValue = event.target.value.replace(/\D/g, '');
 
@@ -57,6 +58,30 @@ cepInput.addEventListener('input', function(event) {
     console.log("cep...")
     // Limita o número máximo de dígitos para o CEP (8 dígitos)
     inputValue = inputValue.slice(0, 8);
+
+    // console.log(inputValue)
+    // console.log(inputValue.length)
+    if (inputValue.length === 8){
+        // Get API Data
+        formUserCep = await getCepData(inputValue)
+        // IF Error: 
+        if(formUserCep.erro){
+            showMessage("cep-check-message", "Cep Inválido") 
+            console.log(formUserCep.erro)}
+        else { // Valid CPF Flow >> 
+            console.log(formUserCep.logradouro)
+            document.getElementById('cep-values-message').innerHTML = formUserCep.logradouro
+             + ", "
+             + formUserCep.bairro
+             + " - "
+             + formUserCep.localidade
+             + " ("
+             + formUserCep.uf + ")"
+            showMessage("cep-check-message", "✅")} }
+
+    else {showMessage("cep-check-message", "")
+          showMessage("cep-values-message", "")
+    }
 
     // Formata o valor no padrão XXXXX-XXX
     const formattedValue = inputValue.replace(/(\d{5})(\d)/, '$1-$2');
@@ -133,11 +158,12 @@ phoneInput.addEventListener('input', function(event) {
 function emailIsValid(email){
 
     if(validateEmail(email)){
-        showMessage('cpf-check-message', '')
+        // showMessage('email-check-message', '')
+        showMessage("email-check-message", "✅")
         console.log("Email Válido!!")
-    } else {showMessage('cpf-check-message', 'Email Inválido')
+    } else {showMessage('email-check-message', 'Email Inválido')
             // Scroll page to up 
-            window.scrollTo(0, 0);
+            // window.scrollTo(0, 0);
     }
 }
 
