@@ -34,9 +34,9 @@
             
             <div class="div-infos-group">
                 
-                <label for="input-cpf" id="label-cpf">CPF:</label>
+                <label for="input-cpf" id="label-cpf">CPF: <spam id="cpf-check-message" class="userMessageField"></spam></label>
                 <input type="text" id="input-cpf" name="input-cpf" maxlength="14" required="true">
-                <spam id="cpf-check-message" class="userMessageField"></spam>
+                
                 
             </div>
             <div class="div-infos-group">
@@ -59,14 +59,14 @@
                 <input type="tel" id="input-phone" name="input-phone"  placeholder="(99) 99999-9999"  disabled>
             </div>
             <div class="div-infos-group">
-                <label for="input-email">Email:</label>
+                <label for="input-email">Email: <spam id="email-check-message" class="userMessageField"></spam></label>
                 <input type="email" id="input-email" name="input-email"  onblur="emailIsValid(value)" disabled>
-                <spam id="email-check-message" class="userMessageField"></spam>
+                
             </div>
             <div class="div-infos-group">
-                <label for="input-cep">CEP:</label>
+                <label for="input-cep">CEP: <spam id="cep-check-message" class="userMessageField"></spam></label>
                 <input type="text" id="input-cep" name="input-cep" maxlength="10" disabled>
-                <spam id="cep-check-message" class="userMessageField"></spam><spam id="cep-values-message" class="cepDataMessageField"></spam>
+                <spam id="cep-values-message" class="cepDataMessageField"></spam>
                 
             </div>
 

@@ -9,8 +9,6 @@ async function getApiDataForm(){
     // console.table(formRawData);
 }
 
-
-
 // Função para atualizar os valores na tela
 function updateScreenValues(users) {
     const container = document.getElementById('userContainer');
@@ -39,16 +37,12 @@ function updateScreenValues(users) {
         </thead>
     `;
     table.innerHTML = headerRow;
-
-    // Table body
-    const tbody = document.createElement('tbody');
+    
+    const tbody = document.createElement('tbody'); // Table body
 
     users.forEach(user => {
         const isCreatedClass = user.IS_CREATED == 'Feito' ? 'status-done' : 'status-pending';
         const isfirstloginClass = user.IS_FIRST_LOGIN == 'Feito' ? 'status-done' : 'status-pending';
-        // console.log(user.IS_CREATED, user.IS_FIRST_LOGIN)
-        // console.log(isCreatedClass, isfirstloginClass)
-
         const row = `
             <tr>
                 <td id="td-username">${user.USERNAME}</td>
@@ -62,12 +56,10 @@ function updateScreenValues(users) {
                 <td>${user.ROLE_NAME}</td>
                 <td class="${isCreatedClass}">${user.IS_CREATED}</td>
                 <td class="${isfirstloginClass}">${user.IS_FIRST_LOGIN}</td>
-
             </tr>
         `;
         tbody.innerHTML += row;
     });
-
     table.appendChild(tbody); 
     container.appendChild(table); 
 }
