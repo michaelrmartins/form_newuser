@@ -2,13 +2,13 @@
 const cpfInput = document.getElementById('input-cpf');
         
 // Adiciona um listener para o evento de input
+// Remove qualquer caracter que não seja número
 cpfInput.addEventListener('input', async function(event) {
-    // Remove qualquer caracter que não seja número
+   
     const inputValue = event.target.value.replace(/\D/g, '');
     
-    // Chama a função validaCPF() para verificar se o CPF é válido
+    //  Call validaCPF() function 
     if (validaCPF(inputValue)) {
-        // console.log('CPF válido');
         showMessage('cpf-check-message', '')
         if( await checkCpfIsWaitingToCreate(inputValue)){
             alert("Já existe uma solicitação para este CPF, em breve entraremos em contato")
@@ -16,24 +16,18 @@ cpfInput.addEventListener('input', async function(event) {
         } else {console.log("Permitido Enviar Cadastro")
                 showMessage("cpf-check-message", "✅")
                 enableFields ()}
-
-        // enableFields ()
-        // changeFieldStyle('input-cpf')
     } else {
         const valuesElement = document.getElementById('input-cpf');
-        // console.log(valuesElement.value.length)
         if(valuesElement.value.length == 14){
             console.log('CPF inválido');
         showMessage('cpf-check-message', 'CPF Inválido')
         } else { showMessage('cpf-check-message', '') }    
     }
 
-    // Limita o número máximo de dígitos
-    const maxLength = 11;
+    const maxLength = 11; // limit max digits to 11
     const formattedValue = inputValue.slice(0, maxLength);
     
-    // Atualiza o valor do campo
-    event.target.value = formattedValue;
+    event.target.value = formattedValue;    // Finnaly, update field
 });
 
 document.getElementById('input-cpf').addEventListener('input', function(e) {
@@ -49,27 +43,18 @@ document.getElementById('input-cpf').addEventListener('input', function(e) {
   // / ********* CEP FIELD LISTENER ************ \ \\
 const cepInput = document.getElementById('input-cep');
 
-// Listener
+
 cepInput.addEventListener('input', async function(event) {
-    // Remove qualquer caracter que não seja número
-    let inputValue = event.target.value.replace(/\D/g, '');
+    let inputValue = event.target.value.replace(/\D/g, ''); // Remove Any NaN 
 
-
-    console.log("cep...")
-    // Limita o número máximo de dígitos para o CEP (8 dígitos)
     inputValue = inputValue.slice(0, 8);
 
-    // console.log(inputValue)
-    // console.log(inputValue.length)
     if (inputValue.length === 8){
-        // Get API Data
-        formUserCep = await getCepData(inputValue)
-        // IF Error: 
+        formUserCep = await getCepData(inputValue) // Get API Data
         if(formUserCep.erro){
             showMessage("cep-check-message", "Cep Inválido") 
             console.log(formUserCep.erro)}
         else { // Valid CPF Flow >> 
-            console.log(formUserCep.logradouro)
             document.getElementById('cep-values-message').innerHTML = formUserCep.logradouro
              + ", "
              + formUserCep.bairro
@@ -78,18 +63,13 @@ cepInput.addEventListener('input', async function(event) {
              + " ("
              + formUserCep.uf + ")"
             showMessage("cep-check-message", "✅")} }
-
     else {showMessage("cep-check-message", "")
           showMessage("cep-values-message", "")
     }
-
     // Formata o valor no padrão XXXXX-XXX
     const formattedValue = inputValue.replace(/(\d{5})(\d)/, '$1-$2');
-
-    // Atualiza o valor do campo
-    event.target.value = formattedValue;
+    event.target.value = formattedValue; // Update field
 });
-
 
 // // / ********* LICENCE TYPE LISTENER ************ \ \\
 const licenceUserSelect = document.getElementById('role-names');
@@ -118,21 +98,8 @@ licenceUserSelect.addEventListener('change', async (event) => {
         document.getElementById('licence-type').innerHTML = ""
         console.log("Null Value")
 
-    } else {        
-        // Insert data on frontend
-        document.getElementById('licence-type').innerHTML = " (" + roleLicenceName + ")"
-        console.log("Value received!!")}
-
-
-    // console.log(roleLicence)
-    console.log(roleLicenceName)
-
-    // console.log(roleValues)
-    console.log("User Value:" + licenceUserSelectValue)
+    } else {document.getElementById('licence-type').innerHTML = " (" + roleLicenceName + ")"}
 })
-
-
-
 
   // / ********* PHONE FIELD LISTENER ************ \ \\
 const phoneInput = document.getElementById('input-phone');
@@ -153,19 +120,14 @@ phoneInput.addEventListener('input', function(event) {
     event.target.value = formattedValue;
 });
 
-
   // / ********* EMAIL FIELD TEST ************ \ \\
 function emailIsValid(email){
 
     if(validateEmail(email)){
-        // showMessage('email-check-message', '')
         showMessage("email-check-message", "✅")
         console.log("Email Válido!!")
-    } else {showMessage('email-check-message', 'Email Inválido')
-            // Scroll page to up 
-            // window.scrollTo(0, 0);
-    }
-}
+    } else {showMessage('email-check-message', 'Email Inválido')}
+} // End emailIsValid
 
   // / ********* CHECK CPF EXISTS IN DATABASE ************ \ \\
 async function checkCpfIsWaitingToCreate(inputCpfValue){
@@ -178,10 +140,7 @@ async function checkCpfIsWaitingToCreate(inputCpfValue){
             .filter(filtered => filtered.IS_FIRST_LOGIN === "Pendente")
 
         let mappedValues = pendentesList.map(cpfValue => cpfValue.CPF)
-            
-            // console.table(inputCpfValue)
-            // console.table(mappedValues)
-        
+                
         // Check input value and compare with mapped values | Return true or False
         const isCpfIncludes = mappedValues.includes(inputCpfValue)
         console.log(isCpfIncludes)

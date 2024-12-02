@@ -1,14 +1,14 @@
+
+// Change State Fields to Enabled
 function enableFields () {
-    // console.log("cliked...")
     const inputList = document.querySelectorAll("input, select, button");
     console.dir(inputList);
     inputList.forEach(id => {
         id.removeAttribute("disabled")
-        
     });
 }
 
-
+// Show Message on frontend Handler
 function showMessage(parameterField, textMessage) {
     console.log(parameterField)
     console.log(textMessage)
@@ -53,9 +53,6 @@ document.getElementById('sendButton').addEventListener('click', function() {
     })
     .then(response => response.json())
     .then(data => {
-        // Handle backend response
-        // console.log('Sucesso:', data);
-        // alert('Dados enviados com sucesso!');
         if(data.error){
             console.log("ocorreu um erro:", data)
             alert(data.error.code + "\n" + data.error.message)
@@ -63,10 +60,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
             console.log("Cadastro realizado com sucesso")
             alert("Cadastro Realizado!!")
             window.location.reload()
-
         } // End Else
-
-
     })
     .catch(error => {
         console.error('Erro:', error);
