@@ -9,13 +9,40 @@ cpfInput.addEventListener('input', async function(event) {
     
     //  Call validaCPF() function 
     if (validaCPF(inputValue)) {
+        console.log(inputValue)
         showMessage('cpf-check-message', '')
-        if( await checkCpfIsWaitingToCreate(inputValue)){
+        // if( await checkCpfIsWaitingToCreate(inputValue)){
+        if( await checkCpfIsWaitingToCreate (inputValue)){
+            console.log("chegou nesse caralho")
             alert("Já existe uma solicitação para este CPF, em breve entraremos em contato")
-            console.log("CPF já Cadastrado...")
-        } else {console.log("Permitido Enviar Cadastro")
+            console.log("Já existe uma solicitação para este CPF...") 
+
+
+        } else if (await checkCpfExistsInMv(inputValue)) {
+            
+            console.log("chegou nesse caralho 2")
+            alert("Já Existe um Cadastro no Sistema MV para o CPF informado, Compareça ao GTI para atualizar seu cadastro.")
+            console.log("CPF já Cadastrado no MV...")
+                    
+
+        // if( await checkCpfExistsInMv(inputValue)){
+        //     console.log("chegou nesse caralho 2")
+        //     alert("Já Existe um Cadastro no Sistema MV para o CPF informado, Compareça ao GTI para atualizar seu cadastro.")
+        //     console.log("CPF já Cadastrado no MV...")
+        //    } 
+        // } else {
+        //     console.log("chegou nesse caralho antes do if" + inputValue)
+        //     if( await checkCpfExistsInMv(inputValue)){
+        //     console.log("chegou nesse caralho 2")
+        //     alert("Já Existe um Cadastro no Sistema MV para o CPF informado, Compareça ao GTI para atualizar seu cadastro.")
+        //     console.log("CPF já Cadastrado no MV...")
+        //    }
+           
+        } else {
+                console.log("Permitido Enviar Cadastro")
                 showMessage("cpf-check-message", "✅")
                 enableFields ()}
+        
     } else {
         const valuesElement = document.getElementById('input-cpf');
         if(valuesElement.value.length == 14){
@@ -129,7 +156,7 @@ function emailIsValid(email){
     } else {showMessage('email-check-message', 'Email Inválido')}
 } // End emailIsValid
 
-  // / ********* CHECK CPF EXISTS IN DATABASE ************ \ \\
+  // / ********* CHECK CPF EXISTS IN LOCAL DATABASE ************ \ \\
 async function checkCpfIsWaitingToCreate(inputCpfValue){
     try {
         const rawCpfData = await fetch('http://192.168.2.214:8059/api/form')
@@ -150,3 +177,28 @@ async function checkCpfIsWaitingToCreate(inputCpfValue){
     catch(error) {console.error(error)}
 
 } //End getCpfListWaitingCreate function
+
+  // / ********* CHECK CPF EXISTS IN MV DATABASE************ \ \\
+async function checkCpfExistsInMv(inputCpfValue){
+    try {
+        const rawCpfData = await fetch('http://192.168.2.214:8073/api/users/CPF')
+        const jsonCpfData = await rawCpfData.json()
+
+        // console.log(jsonCpfData)
+        
+        // let pendentesList = jsonCpfData
+        //     .filter(filtered => filtered.IS_CREATED === "Pendente")
+        //     .filter(filtered => filtered.IS_FIRST_LOGIN === "Pendente")
+
+        let mappedValues = jsonCpfData.map(cpfValue => cpfValue)
+        // console.log(mappedValues)
+                
+        // Check input value and compare with mapped values | Return true or False
+        const isCpfIncludes = mappedValues.includes(inputCpfValue)
+        console.log(isCpfIncludes)
+        return isCpfIncludes;
+
+    } // End Try
+    catch(error) {console.error(error)}
+
+} //End checkCpfExistsInMv function
