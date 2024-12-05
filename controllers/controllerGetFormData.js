@@ -31,7 +31,6 @@ const getRoles = async (req, resp) => {
 
 } // End getRoles
 
-
 const getDepartments = async (req, resp) => {
    console.log("Controlle getDepartments Executed....")
    departmentsData = await formHandler.modelGetDepartmentsData()
