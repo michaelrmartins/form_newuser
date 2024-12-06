@@ -1,4 +1,3 @@
-
 // Change State Fields to Enabled
 function enableFields () {
     const inputList = document.querySelectorAll("input, select, button");
@@ -27,6 +26,9 @@ document.getElementById('sendButton').addEventListener('click', function() {
         const sanitizedBirthdate = sanitizer(document.getElementById('input-birthdate').value)  
         const sanitizedCep = sanitizer(document.getElementById('input-cep').value)   
 
+        // Get Email
+        const userEmail = document.getElementById('input-email').value
+
     const formData = {
         CPF: sanitizedCpf,
         USERNAME: document.getElementById('input-name').value,
@@ -40,7 +42,16 @@ document.getElementById('sendButton').addEventListener('click', function() {
         REGISTERNUMBER: document.getElementById('input-register').value,
     };
 
+    const emailData = {
+        emailApiId: "1",
+        email: document.getElementById('input-email').value
+
+    }
+    
     const jsonData = JSON.stringify(formData);
+    const jsonEmailData = JSON.stringify(emailData)
+
+
 
     console.log(jsonData)
    
@@ -57,6 +68,16 @@ document.getElementById('sendButton').addEventListener('click', function() {
             console.log("ocorreu um erro:", data)
             alert(data.error.code + "\n" + data.error.message)
         } else {
+
+                // Send Confirm Email
+                fetch('http://192.168.2.214:8059/api/smtp/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: jsonEmailData,
+                })
+            // Send Success Message to Frontend
             console.log("Cadastro realizado com sucesso")
             alert("Cadastro Realizado!!")
             window.location.reload()
