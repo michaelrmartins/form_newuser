@@ -4,6 +4,7 @@ const database = require('./connections')
 
 // Load Queries
 const { queryGetRegistersForm, queryGetRegistersById, queryGetRolesValuesActive, queryGetDepartments } = require("./queries/formLoadData")
+const {querySMTPGetData, querySMTPGetDataById } = require('./queries/SMTPLoadData')
 
 // Load Form data
 const modelGetRegistersForm = async () => {
@@ -31,9 +32,24 @@ const modelGetDepartmentsData = async () => {
 } // End
 
 
+// Load SMTP data 
+const modelGetSMTPData = async () => {
+    const [rows] = await database.execute(querySMTPGetData)
+    return rows;
+}
+
+// Load SMTP data By ID
+const modelGetSMTPDataById = async (regId) => {
+    const id = regId
+    const [rows] = await database.execute(querySMTPGetDataById, [id])
+    return rows;
+}
+
 module.exports = {
     modelGetRegistersForm,
     modelGetRegistersById,
     modelGetRolesData,
-    modelGetDepartmentsData
+    modelGetDepartmentsData,
+    modelGetSMTPData,
+    modelGetSMTPDataById
 }
