@@ -1,9 +1,6 @@
 // Send Email -  Node.Js 
 const sendEmailModule = require('nodemailer');
-// const 
 
-// const Dotenv = require('dotenv')
-// Dotenv.config()
 async function serviceSendEmailHandler({smtpConfigId, email, var1, var2, var3, var4}) {
     console.log("Service executed", smtpConfigId, email, var1, var2, var3, var4)
     try {
@@ -23,6 +20,10 @@ async function serviceSendEmailHandler({smtpConfigId, email, var1, var2, var3, v
             MESSAGE_BODY,
             REPLY_TO,
         } = emailConfig;
+
+        // Load Var Data to MESSAGE_BODY
+        const MESSAGE_BODY_VAR = MESSAGE_BODY.replace("{{NOME}}", var1)
+
 
         console.log(`${SERVER_HOST}:${SERVER_PORT}`) 
         // return "Email Sent successfully"
@@ -47,7 +48,7 @@ async function serviceSendEmailHandler({smtpConfigId, email, var1, var2, var3, v
                     console.log("email Sent!!")
         }
 
-        serviceSendEmail(email, MESSAGE_SUBJECT, MESSAGE_BODY)
+        serviceSendEmail(email, MESSAGE_SUBJECT, MESSAGE_BODY_VAR)
     } catch (error) {console.log(error)} // End catch
 }; // End sendEmailHandler
 
