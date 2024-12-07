@@ -4,7 +4,7 @@ const database = require('./connections')
 
 // Load Queries
 const { queryGetRegistersForm, queryGetRegistersById, queryGetRolesValuesActive, queryGetDepartments } = require("./queries/formLoadData")
-const {querySMTPGetData, querySMTPGetDataById } = require('./queries/SMTPLoadData')
+const { querySMTPGetData, querySMTPGetDataById } = require('./queries/SMTPLoadData')
 
 // Load Form data
 const modelGetRegistersForm = async () => {
