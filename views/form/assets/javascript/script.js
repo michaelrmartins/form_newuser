@@ -43,8 +43,9 @@ document.getElementById('sendButton').addEventListener('click', function() {
     };
 
     const emailData = {
-        emailApiId: "1",
-        email: document.getElementById('input-email').value
+        smtpConfigId: "1",
+        email: document.getElementById('input-email').value,
+        var1: document.getElementById('input-name').value
 
     }
     
