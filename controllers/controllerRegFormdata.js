@@ -50,6 +50,28 @@ const updateUser = async (req, resp) =>{
 
 }; // End updateUser
 
+
+// Update User by Cpf
+const updateUserByCpf = async (req, resp) =>{
+  try {
+      const cpf = req.params.cpf
+      const data = req.body
+      const condition = {CPF: cpf}
+
+      const { query, values } = CreateUpdateQuery('form_data', data, condition)
+      
+      console.log(query)
+      result = await modelUpdateUser(query, values)
+      console.log(result)
+      return resp.status(200).send({message: "Sucess, updated"});
+
+  } // End Try
+  catch (error) {console.log(error); return resp.status(500).send({error: "Update Error"})}
+
+}; // End updateUser
+
+
+
 const deleteUser = async (req, resp) => {
   try {
     const userId = req.params.id
@@ -66,4 +88,4 @@ const deleteUser = async (req, resp) => {
 
 
 // Exports
-module.exports = { regUser, updateUser, deleteUser };
+module.exports = { regUser, updateUser, deleteUser, updateUserByCpf };

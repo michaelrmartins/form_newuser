@@ -8,6 +8,7 @@ const getRegisters = async (req, resp) => {
    return resp.status(200).send(formData)
 } // End getRegisters
 
+// Get Registers By ID
 const getRegistersById = async (req, resp) => {
    console.log("controller getRegistersById executed " + req.params.id)
    // Check id 
@@ -23,6 +24,23 @@ const getRegistersById = async (req, resp) => {
    } // End Try
    catch(error) {console.log(error)}
 } // End getRegistersById
+
+// Get Registers By CPF
+const getRegistersByCpf = async (req, resp) => {
+   console.log("controller getRegistersByCpf executed " + req.params.cpf)
+   // Check id 
+   if (isNaN(req.params.cpf)){return resp.status(400).json({"error": "Invalid CPF", "message": "CPF is not a number"})} 
+   if (req.params.cpf <= 0 ){return resp.status(400).json({"error": "Invalid CPF", "message":"CPF 0 or Negative"})}
+
+   // Main execute
+   try {
+      const regCpf = req.params.cpf;
+      console.log(regCpf)
+      const result = await formHandler.modelGetRegistersByCpf(regCpf)
+      return resp.status(200).json(result)
+   } // End Try
+   catch(error) {console.log(error)}
+} // End getRegistersByCpf
 
 const getRoles = async (req, resp) => {
    console.log("Controlle getRoles Executed....")
@@ -41,6 +59,7 @@ const getDepartments = async (req, resp) => {
 module.exports = { 
    getRegisters,
    getRegistersById,
+   getRegistersByCpf,
    getRoles,
    getDepartments
 };
