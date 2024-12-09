@@ -9,9 +9,27 @@ Exibição de formulário para solicitação de cadastro.
 Validação básica de dados do formulário.
 Armazenamento dos dados de solicitação em um banco de dados MySQL.
 Configuração de variáveis de ambiente para fácil adaptação entre ambientes de desenvolvimento e produção.
+
 🛠️ Tecnologias Utilizadas
 Node.js: Plataforma para execução de JavaScript no servidor.
 Express: Framework para criação de servidores HTTP.
 MySQL: Banco de dados relacional para armazenar as solicitações de cadastro.
 dotenv: Gerenciamento de variáveis de ambiente.
 nodemon: Monitoramento de alterações nos arquivos para desenvolvimento.
+
+
+------------- 
+Update - 
+
+Send PUT Request to http://192.168.2.214:8059/api/form/${ID} 
+
+
+Example: http://192.168.2.214:8059/api/form/109
+
+Json Body example:
+
+{
+	"is_created": "1"
+}
+
+User with ID 109 now "is_created" changed to 1
