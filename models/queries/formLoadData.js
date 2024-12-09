@@ -37,6 +37,11 @@ SELECT * FROM cadastro_usuarios.form_data
 where id = ?
 `; // End
 
+const queryGetRegistersByCpf = `
+SELECT * FROM cadastro_usuarios.form_data
+where CPF = ?
+`; // End
+
 const queryGetRolesValuesActive = `
 SELECT * FROM cadastro_usuarios.form_roles
 where ROLE_STATUS = 1
@@ -53,6 +58,7 @@ order by NAME asc
 module.exports = {
     queryGetRegistersForm,
     queryGetRegistersById,
+    queryGetRegistersByCpf,
     queryGetRolesValuesActive,
     queryGetDepartments
 }
