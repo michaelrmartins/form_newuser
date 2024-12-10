@@ -4,8 +4,11 @@ const express = require('express')
 const cors = require('cors');
 const app = express();
 const path = require('path')
+const { startTask } = require('./scheduler/tasks')
 
-// const path = require('path');
+
+// Start Tasks
+startTask();
 
 // TEMPORARY !! --- DANGER -- REMOVE IN PRODUCTION
 app.use(cors(
@@ -25,7 +28,6 @@ app.use("/", express.static(path.join(__dirname, 'views', 'form')))
 
 // View Pages Routes / Admin
 app.use("/admin", express.static(path.join(__dirname, 'views', 'admin')))
-
 
 // Enable Express to understand Json
 app.use(express.json());

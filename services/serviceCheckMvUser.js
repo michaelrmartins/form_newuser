@@ -2,7 +2,8 @@
 // load MV users and local users, and compare both lists
 
 const localApiUrlRegisters = "http://192.168.2.214:8059/api/form/";
-const OraMvApiUrlRegisters = "http://192.168.2.214:8073/api/users/CPF"
+const cpfMvApiUrlRegisters = "http://192.168.2.214:8073/api/users/CPF"
+// const allMvApiUrlRegisters = "http://192.168.2.214:8073/api/users/"
 
 // Check CPF Is Created
 async function CheckCpfIsCreated() {
@@ -15,7 +16,7 @@ async function CheckCpfIsCreated() {
         .map(filtered => filtered.CPF)
 
         // Load Mv Data
-        const rawMvCpfData = await fetch(OraMvApiUrlRegisters)
+        const rawMvCpfData = await fetch(cpfMvApiUrlRegisters)
         const jsonRawMvCpfData = await rawMvCpfData.json()
         const jsonRawMvCpfDataMapped = jsonRawMvCpfData.map(cpfValue => cpfValue)
 
@@ -49,7 +50,7 @@ async function CheckCpfIsfirstLogin() {
         .map(filtered => filtered.CPF)
 
         // Load Mv Data
-        const rawMvCpfData = await fetch(OraMvApiUrlRegisters)
+        const rawMvCpfData = await fetch(cpfMvApiUrlRegisters)
         const jsonRawMvCpfData = await rawMvCpfData.json()
         const jsonRawMvCpfDataMapped = jsonRawMvCpfData.map(cpfValue => cpfValue)
 
@@ -57,22 +58,30 @@ async function CheckCpfIsfirstLogin() {
         const mvCpfSetData = new Set(jsonRawMvCpfDataMapped) 
 
         // Check and Update if Necessary
-        jsonRawLocalCpfDataMapped.forEach(localCpf => {
+        for (const localCpf of jsonRawLocalCpfDataMapped) {
             // CPF Found on MV list \/
             if(mvCpfSetData.has(localCpf)) { 
                 console.log(`Cpf encontrado em ambas as Listas: ${localCpf}`)
-                // Update User on Database
-                fetch(`http://192.168.2.214:8059/api/form/cpf/${localCpf}`, {
-                    method: 'PUT',
-                    headers: {'Content-Type': 'application/json', }, 'body': JSON.stringify({ IS_FIRST_LOGIN:'1'}),
-                }) // End Fetch
+
+                const rawIsFirstLogin = await fetch(`${cpfMvApiUrlRegisters}/${localCpf}`)
+                const jsonRawIsFirstLogin = await rawIsFirstLogin.json()
+                // console.log(jsonRawIsFirstLogin)
+                const jsonRawIsFirstLoginFiltered = jsonRawIsFirstLogin
+                .filter(filtered => filtered.SN_SENHA_PLOGIN === 'N')
+
+                if(jsonRawIsFirstLoginFiltered.length > 0  ){
+                    fetch(`http://192.168.2.214:8059/api/form/cpf/${localCpf}`, {
+                        method: 'PUT',
+                        headers: {'Content-Type': 'application/json', }, 'body': JSON.stringify({ IS_FIRST_LOGIN:'1'}),
+                    }) // End Fetch
+                } // End if jsonRawIsFirstLogin
             } else {
                 console.log(`Cpf não encontrado na Lista MV: ${localCpf}`)
             } // End If
-        })// End For Each
+        }// End For Each
     } catch (error) {console.error(error)} // End Catch
 } //End CheckCpfIsfirstLogin
 
-// Call Functions
-CheckCpfIsCreated()
-CheckCpfIsfirstLogin()
+
+module.exports = { CheckCpfIsCreated,
+                   CheckCpfIsfirstLogin }
