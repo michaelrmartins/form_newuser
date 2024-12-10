@@ -8,7 +8,9 @@
 
 /* Main Menu */
 .div-container-top-menu {
-    border-radius: 10px;
+    overflow: hidden;
+    background-color: #333;
+    /* border-radius: 10px; */
     width: 23%;
     /* height: 50px; */
     display: flex;
@@ -16,6 +18,32 @@
     /* background-color: #b6b9b9; */
 
 }
+.div-container-top-menu a {
+    
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.div-container-top-menu a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+.div-container-top-menu a.active-menu {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.div-container-top-menu .icon {
+    display: none;
+}
+
 
 .p-menu {
     text-align: center;
@@ -27,7 +55,6 @@
     cursor: pointer;
     padding-left: 20px;
 }
-
 
 .p-menu:hover{
     color: #fafafa;
