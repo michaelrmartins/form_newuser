@@ -28,8 +28,8 @@ FROM
     cadastro_usuarios.form_roles roles ON form.ID_ROLE = roles.ID
         LEFT JOIN
     cadastro_usuarios.form_departments departments ON form.ID_DEPARTMENT = departments.ID
-WHERE
-    form.ARCHIVED = 0
+-- WHERE
+--    form.ARCHIVED = 0
 `; // End
 
 const queryGetRegistersById = `
