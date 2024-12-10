@@ -5,7 +5,9 @@ const formApiURL = "http://192.168.2.214:8059/api/form"
 // Load data
 async function getApiDataForm(){
     const formRawData = await fetch(`${formApiURL}`).then(response => response.json())
-    updateScreenValues(formRawData)
+    const filteredRawData = formRawData
+    .filter (filtered => Number(filtered.ARCHIVED === 0))
+    updateScreenValues(filteredRawData)
     // console.table(formRawData);
 }
 
