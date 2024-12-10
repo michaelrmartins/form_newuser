@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="https://i0.wp.com/www.heaa.com.br/wp-content/uploads/2024/01/FAVICON.jpg?fit=18%2C18&amp;ssl=1" sizes="32x32">
+    <link rel="icon" href="https://i0.wp.com/www.heaa.com.br/wp-content/uploads/2024/01/FAVICON.jpg?fit=18%2C18&amp;ssl=1" sizes="192x192">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="assets/javascript/script.js"></script>
+    <title>Arquivados</title>
 </head>
-<body>
-    
+<body onload="getApiDataForm()">
+    <div class="div-container-top-menu">
+        <a href="/admin">Início</a>
+        <a href="/admin/arquivados" class="active-menu">Arquivados</a>
+        <a href="/admin/config/">Configurações</a>
+    </div>
+        <div class="div-main-table">
+            <p id="username"></p>
+        </div>
+    <div id="userContainer"></div>
 </body>
 </html>
