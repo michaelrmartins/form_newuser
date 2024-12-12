@@ -33,6 +33,7 @@ function updateScreenValues(users) {
                 <th>Email</th>
                 <th>Setor</th>
                 <th>Especialidade</th>
+                <th>Data da solicitação</th>
                 <th>Status</th>
                 <th>Primeiro login</th>
             </tr>
@@ -50,12 +51,16 @@ function updateScreenValues(users) {
                 <td id="td-username">${user.USERNAME}</td>
                 <td class="mother-name">${user.MOTHER_NAME}</td>
                 <td>${user.CPF}</td>
-                <td>${new Date(user.BIRTHDATE).toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: 'numeric'})}</td>
+                <td>${new Date(user.BIRTHDATE).toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: 'numeric' })}</td>
                 <td>${user.PHONE}</td>
                 <td>${user.CEP}</td>
                 <td>${user.EMAIL}</td>
                 <td>${user.DEPARTMENT_NAME}</td>
                 <td>${user.ROLE_NAME}</td>
+                <td>
+                    ${new Date(user.CREATED_ON).toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: 'numeric'})},
+                    ${new Date(user.CREATED_ON).toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: 'false'})}
+                </td>
                 <td class="${isCreatedClass}">${user.IS_CREATED}</td>
                 <td class="${isfirstloginClass}">${user.IS_FIRST_LOGIN}</td>
             </tr>

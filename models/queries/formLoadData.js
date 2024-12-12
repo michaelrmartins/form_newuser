@@ -21,7 +21,9 @@ SELECT
         WHEN form.IS_FIRST_LOGIN = 0 THEN 'Pendente'
         WHEN form.IS_FIRST_LOGIN = 1 THEN 'Feito'
     END AS IS_FIRST_LOGIN,
-    form.ARCHIVED
+    form.ARCHIVED,
+    form.CREATED_ON,
+    form.UPDATED_ON
 FROM
     cadastro_usuarios.form_data form
         LEFT JOIN
