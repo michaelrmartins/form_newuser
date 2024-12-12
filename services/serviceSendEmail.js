@@ -41,6 +41,7 @@ async function serviceSendEmailHandler({smtpConfigId, email, var1, var2, var3, v
 
         function serviceSendEmail(to, sub, msg) {
             transporter.sendMail({
+                    from: '"GTI HEAA" <gti-noreply@fbpn-campos.com.br>',
                     to:to,
                     subject:sub,
                     html:msg });

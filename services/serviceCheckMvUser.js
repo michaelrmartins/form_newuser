@@ -28,6 +28,7 @@ async function CheckCpfIsCreated() {
             // CPF Found on MV list \/
             if(mvCpfSetData.has(localCpf)) { 
                 // Update User on Database
+                console.log("Um email foi enviado")
                 fetch(`http://192.168.2.214:8059/api/form/cpf/${localCpf}`, {
                     method: 'PUT',
                     headers: {'Content-Type': 'application/json', }, 'body': JSON.stringify({ IS_CREATED: '1'}),
