@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const controllerGetFormData = require('../controllers/controllerGetFormData')
-const controllerRegFormData = require('../controllers/controllerRegFormdata')
+const controllerRegFormData = require('../controllers/controllerRegFormData')
 
 // Get's
 router.get("/", controllerGetFormData.getRegisters)

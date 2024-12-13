@@ -3,10 +3,20 @@
 const express = require('express');
 const router = express.Router();
 
-const controllerGetFormData = require('../controllers/controllerGetFormData')
-// const controllerRegFormData = require('../controllers/controllerRegFormdata')
+const controllerGetFormData = require('../controllers/controllerGetDepartmentsData')
 
-// router.get("/", (req, resp) => resp.status(200).send("Roles Page."));
+// Get's
 router.get("/", controllerGetFormData.getDepartments)
+router.get("/:id", controllerGetFormData.getDepartmentsById)
 
+// Post's
+
+
+// Put's
+
+
+//Delete's
+
+
+// Export
 module.exports = router;

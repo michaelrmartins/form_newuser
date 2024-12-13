@@ -50,10 +50,19 @@ where ROLE_STATUS = 1
 order by ROLE_NAME ASC
 `; // End
 
+const queryGetRolesById = `
+SELECT * FROM cadastro_usuarios.form_roles
+where ID = ?
+`; // End
+
 const queryGetDepartments = `
 SELECT * FROM cadastro_usuarios.form_departments
 order by NAME asc
+`; // End
 
+const queryGetDepartmentsById = `
+SELECT * FROM cadastro_usuarios.form_departments
+where ID = ?
 `; // End
 
 // Module Exports
@@ -62,5 +71,7 @@ module.exports = {
     queryGetRegistersById,
     queryGetRegistersByCpf,
     queryGetRolesValuesActive,
-    queryGetDepartments
+    queryGetRolesById,
+    queryGetDepartments,
+    queryGetDepartmentsById
 }

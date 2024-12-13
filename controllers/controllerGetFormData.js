@@ -42,24 +42,8 @@ const getRegistersByCpf = async (req, resp) => {
    catch(error) {console.log(error)}
 } // End getRegistersByCpf
 
-const getRoles = async (req, resp) => {
-   console.log("Controlle getRoles Executed....")
-   roleData = await formHandler.modelGetRolesData()
-   return resp.status(200).send(roleData)
-
-} // End getRoles
-
-const getDepartments = async (req, resp) => {
-   console.log("Controlle getDepartments Executed....")
-   departmentsData = await formHandler.modelGetDepartmentsData()
-   return resp.status(200).send(departmentsData)
-
-} 
-
 module.exports = { 
    getRegisters,
    getRegistersById,
-   getRegistersByCpf,
-   getRoles,
-   getDepartments
+   getRegistersByCpf
 };
