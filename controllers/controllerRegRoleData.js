@@ -1,6 +1,9 @@
 // Controller file - regRoleData
 
 const { regNewRole } = require ('../models/modelRegDataHandler')
+const CreateUpdateQuery = require('../models/modelDinamicCreateUpdateQuery')
+const { modelUpdateUser } = require('../models/modelUpdateDataHandler')
+const { modelDeleteRole } = require ('../models/modelDeleteDataHandler')
 
 // Register new user
 const regRole = async (req, resp ) => {
@@ -19,4 +22,29 @@ const regRole = async (req, resp ) => {
    return resp.status(500).json({message: "Error Registring user", error})} 
 };
 
-module.exports = { regRole }
+// Update Role
+const updateRole = async (req, resp) =>{
+   try {
+       const roleId = req.params.id
+       const data = req.body
+       const condition = {ID: roleId}
+ 
+       const { query, values } = CreateUpdateQuery('form_roles', data, condition)
+       result = await modelUpdateUser(query, values)
+       console.log(result)
+       return resp.status(200).send({message: "Sucess, updated"});
+   } catch (error) {console.log(error); return resp.status(500).send({error: "Update Error"})}
+ };
+
+// Delete Role
+const deleteRole = async (req, resp) => {
+   try {
+     const roleId = req.params.id
+     console.log(roleId)
+     result = await modelDeleteRole(roleId)
+     return resp.status(200).send({message: "Sucess, removed!"})
+ 
+   } catch (error) {console.log(error); return resp.status(500).send({error: "Delete Error"})}
+ }; // End deleteRole
+
+module.exports = { regRole, updateRole, deleteRole }
