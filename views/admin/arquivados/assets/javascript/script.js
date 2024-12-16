@@ -34,7 +34,7 @@ function updateScreenValues(users) {
                 <th>Especialidade</th>
                 <th>Status</th>
                 <th>Primeiro login</th>
-                <th id="td-text-archive-row">Desarquivar</th>
+                <th id="td-text-archive-row">Restaurar</th>
                 <th id="td-text-delete-row">Apagar</th>
             </tr>
         </thead>
