@@ -1,11 +1,11 @@
 // Controller file - regRoleData
 
-const { regNewRole } = require ('../models/modelRegDataHandler')
 const CreateUpdateQuery = require('../models/modelDinamicCreateUpdateQuery')
+const { regNewRole } = require ('../models/modelRegDataHandler')
 const { modelUpdateUser } = require('../models/modelUpdateDataHandler')
 const { modelDeleteRole } = require ('../models/modelDeleteDataHandler')
 
-// Register new user
+// Register new role
 const regRole = async (req, resp ) => {
   try{ 
    console.log(req.body)

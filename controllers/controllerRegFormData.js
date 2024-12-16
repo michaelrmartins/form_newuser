@@ -1,6 +1,6 @@
 // Controller File - regFormData
 
-const formHandler = require('../models/modelRegDataHandler')
+const { regNewUser } = require('../models/modelRegDataHandler')
 const CreateUpdateQuery = require('../models/modelDinamicCreateUpdateQuery')
 const { modelUpdateUser } = require('../models/modelUpdateDataHandler')
 const { modelDeleteUser } = require('../models/modelDeleteDataHandler')
@@ -10,7 +10,7 @@ const regUser = async (req, resp ) => {
   try{ 
    console.log(req.body)
    const { USERNAME, BIRTHDATE, CPF, MOTHER_NAME, PHONE, EMAIL, CEP, ID_ROLE, ID_DEPARTMENT, USER_EXAMPLE } = req.body;
-   const result = await formHandler({
+   const result = await regNewUser({
        username: USERNAME,
        birthdate: BIRTHDATE || null,
        cpf: CPF,  
