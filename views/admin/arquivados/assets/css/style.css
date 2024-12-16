@@ -122,3 +122,15 @@
 .mother-name {
     text-transform: capitalize;
 }
+
+#td-button-archive-row, 
+#td-button-delete-row{
+    text-align: center;
+}
+
+#td-text-archive-row,
+#td-text-delete-row {
+    text-align: center;
+}
+
+

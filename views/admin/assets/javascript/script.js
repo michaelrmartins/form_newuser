@@ -36,6 +36,7 @@ function updateScreenValues(users) {
                 <th>Data da solicitação</th>
                 <th>Status</th>
                 <th>Primeiro login</th>
+                <th id="td-text-archive-row">Arquivar</th>
             </tr>
         </thead>
     `;
@@ -63,6 +64,7 @@ function updateScreenValues(users) {
                 </td>
                 <td class="${isCreatedClass}">${user.IS_CREATED}</td>
                 <td class="${isfirstloginClass}">${user.IS_FIRST_LOGIN}</td>
+                <td id="td-button-archive-row"><button onclick="archiveRow(${user.ID})" id="button-archive-row" data-id="${user.ID}">📂</button></td>
             </tr>
         `;
         tbody.innerHTML += row;
@@ -71,3 +73,17 @@ function updateScreenValues(users) {
     container.appendChild(table); 
 }
 
+// Archive Rows
+function archiveRow(value) {
+    fetch(`http://192.168.2.214:8059/api/form/${value}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({"ARCHIVED": "1"}),
+    })
+    const row = document.querySelector(`button[data-id="${value}"]`).closest('tr');
+    row.remove()
+    // window.location.reload()
+    console.log(value);
+}

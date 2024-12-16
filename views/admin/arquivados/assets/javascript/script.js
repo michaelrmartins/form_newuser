@@ -34,6 +34,8 @@ function updateScreenValues(users) {
                 <th>Especialidade</th>
                 <th>Status</th>
                 <th>Primeiro login</th>
+                <th id="td-text-archive-row">Desarquivar</th>
+                <th id="td-text-delete-row">Apagar</th>
             </tr>
         </thead>
     `;
@@ -57,6 +59,8 @@ function updateScreenValues(users) {
                 <td>${user.ROLE_NAME}</td>
                 <td class="${isCreatedClass}">${user.IS_CREATED}</td>
                 <td class="${isfirstloginClass}">${user.IS_FIRST_LOGIN}</td>
+                <td id="td-button-archive-row"><button onclick="removeFromArchiveRow(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">⬆</button></td>
+                <td id="td-button-delete-row"><button onclick="deleteArchiveRow(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">❌</button></td>
             </tr>
         `;
         tbody.innerHTML += row;
@@ -65,3 +69,30 @@ function updateScreenValues(users) {
     container.appendChild(table); 
 }
 
+// Remove from Archive Rows
+function removeFromArchiveRow(value) {
+    fetch(`http://192.168.2.214:8059/api/form/${value}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({"ARCHIVED": "0"}),
+    })
+    const row = document.querySelector(`button[data-id="${value}"]`).closest('tr');
+    row.remove()
+    console.log(value);
+}
+
+// Delete Archive Rows
+function deleteArchiveRow(value) {
+    fetch(`http://192.168.2.214:8059/api/form/${value}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({"ARCHIVED": "0"}),
+    })
+    const row = document.querySelector(`button[data-id="${value}"]`).closest('tr');
+    row.remove()
+    console.log(value);
+}

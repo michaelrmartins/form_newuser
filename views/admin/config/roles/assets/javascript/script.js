@@ -6,19 +6,16 @@ const formApiURL = "http://192.168.2.214:8059/api/roles"
 async function getApiDataForm(){
     const formRawData = await fetch(`${formApiURL}`).then(response => response.json())
     updateScreenValues(formRawData)
-    // console.table(formRawData);
 }
 
-// Função para atualizar os valores na tela
+// Update Screen Values
 function updateScreenValues(users) {
     const container = document.getElementById('userContainer');
-    container.innerHTML = ''; // Limpa o container antes de renderizar
+    container.innerHTML = ''; 
 
-    // Cria a tabela
     const table = document.createElement('table');
     table.classList.add('user-table');
 
-    // Cria o cabeçalho da tabela
     const headerRow = `
         <thead>
             <tr>
@@ -44,7 +41,6 @@ function updateScreenValues(users) {
                 <td>${user.LICENCE_TYPE}</td>
                 <td>${user.LICENCE_DESCRIPTION}</td>
                 <td id="td-username">${user.ROLE_STATUS}</td>
-
             </tr>
         `;
         tbody.innerHTML += row;

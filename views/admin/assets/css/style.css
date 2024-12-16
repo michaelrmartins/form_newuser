@@ -122,3 +122,21 @@
 .mother-name {
     text-transform: capitalize;
 }
+
+#td-text-archive-row {
+
+    text-align: center;
+}
+
+#td-button-archive-row {
+
+    text-align: center;
+}
+
+#button-archive-row {
+    cursor: pointer;
+    font-size: medium;
+    background-color: transparent;
+    size: 13px;
+    border: none;
+}
