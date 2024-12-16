@@ -26,6 +26,8 @@ Send PUT Request to http://192.168.2.214:8059/api/form/${ID}
 
 Example: http://192.168.2.214:8059/api/form/109
 
+Send Json Body with Field and New Value ( you can send one or more fields ):
+
 Json Body example:
 
 {
