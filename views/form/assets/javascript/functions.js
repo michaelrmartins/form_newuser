@@ -116,6 +116,7 @@ licenceUserSelect.addEventListener('change', async (event) => {
     
     // Map Value and return only value == sended by user
     let roleLicenceName = roleLicence.map(licence => licence.LICENCE_TYPE)
+    let roleLicenceDescription = roleLicence.map(licence => licence.LICENCE_DESCRIPTION)
 
     console.log("roleLicenceName:", roleLicenceName);
     console.log(roleLicenceName.length)
@@ -125,7 +126,7 @@ licenceUserSelect.addEventListener('change', async (event) => {
         document.getElementById('licence-type').innerHTML = ""
         console.log("Null Value")
 
-    } else {document.getElementById('licence-type').innerHTML = " (" + roleLicenceName + ")"}
+    } else {document.getElementById('licence-type').innerHTML = " (" + roleLicenceName + ") - " + roleLicenceDescription}
 })
 
   // / ********* PHONE FIELD LISTENER ************ \ \\
