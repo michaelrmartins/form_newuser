@@ -63,13 +63,10 @@ async function CheckCpfIsfirstLogin() {
             // CPF Found on MV list \/
             if(mvCpfSetData.has(localCpf)) { 
                 console.log(`Cpf encontrado em ambas as Listas: ${localCpf}`)
-
                 const rawIsFirstLogin = await fetch(`${cpfMvApiUrlRegisters}/${localCpf}`)
                 const jsonRawIsFirstLogin = await rawIsFirstLogin.json()
-                // console.log(jsonRawIsFirstLogin)
                 const jsonRawIsFirstLoginFiltered = jsonRawIsFirstLogin
                 .filter(filtered => filtered.SN_SENHA_PLOGIN === 'N')
-
                 if(jsonRawIsFirstLoginFiltered.length > 0  ){
                     fetch(`http://192.168.2.214:8059/api/form/cpf/${localCpf}`, {
                         method: 'PUT',
@@ -82,7 +79,6 @@ async function CheckCpfIsfirstLogin() {
         }// End For Each
     } catch (error) {console.error(error)} // End Catch
 } //End CheckCpfIsfirstLogin
-
 
 module.exports = { CheckCpfIsCreated,
                    CheckCpfIsfirstLogin }

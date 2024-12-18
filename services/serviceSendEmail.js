@@ -24,9 +24,7 @@ async function serviceSendEmailHandler({smtpConfigId, email, var1, var2, var3, v
         // Load Var Data to MESSAGE_BODY
         const MESSAGE_BODY_VAR = MESSAGE_BODY.replace("{{NOME}}", var1)
 
-        console.log(`${SERVER_HOST}:${SERVER_PORT}`) 
-        // return "Email Sent successfully"
-
+        // Transporter
         const transporter = sendEmailModule.createTransport(
             {
                 secure: true,
@@ -47,7 +45,6 @@ async function serviceSendEmailHandler({smtpConfigId, email, var1, var2, var3, v
                     html:msg });
                     console.log("email Sent!!")
         }
-
         serviceSendEmail(email, MESSAGE_SUBJECT, MESSAGE_BODY_VAR)
     } catch (error) {console.log(error)} // End catch
 }; // End sendEmailHandler
