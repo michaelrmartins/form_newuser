@@ -24,9 +24,40 @@ async function CheckCpfIsCreated() {
         const mvCpfSetData = new Set(jsonRawMvCpfDataMapped) 
 
         // Check and Update if Necessary
-        jsonRawLocalCpfDataMapped.forEach(localCpf => {
+        for ( const localCpf of jsonRawLocalCpfDataMapped ) {
             // CPF Found on MV list \/
             if(mvCpfSetData.has(localCpf)) { 
+
+                // Get Username from Mv Database
+                const newRegistredUserMvData = await fetch(`${cpfMvApiUrlRegisters}/${localCpf}`)
+                const newRegistredUserDataJson = await newRegistredUserMvData.json()
+                const newRegistredUserDataJsonUserLogin = newRegistredUserDataJson.map( userLogin => userLogin.CD_USUARIO) // Map User.login
+
+                // Get Name and Email from Local Database
+                const newRegistredUserLocalData = await fetch(`${localApiUrlRegisters}/cpf/${localCpf}`)
+                const newRegistredUserLocalDataJson = await newRegistredUserLocalData.json()
+                const newRegistredUserDataJsonUserEmail = newRegistredUserLocalDataJson.map( userLogin => userLogin.EMAIL)
+                const newRegistredUserDataJsonUserUserName = newRegistredUserLocalDataJson.map( userLogin => userLogin.USERNAME.split(' ')[0])
+                
+                const emailData = {
+                    smtpConfigId: "2",
+                    email: newRegistredUserDataJsonUserEmail[0],
+                    var1: newRegistredUserDataJsonUserUserName[0],
+                    var2: newRegistredUserDataJsonUserLogin[0],
+                    var3: newRegistredUserDataJsonUserLogin[0]
+                }
+                emailDataJson = JSON.stringify(emailData)
+
+                // Send Confirm Email
+                fetch('http://192.168.2.214:8059/api/smtp/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: emailDataJson,
+                })
+                // console.log(emailDataJson):
+
                 // Update User on Database
                 console.log("Um email foi enviado")
                 fetch(`http://192.168.2.214:8059/api/form/cpf/${localCpf}`, {
@@ -36,7 +67,7 @@ async function CheckCpfIsCreated() {
             } else {
                 console.log(`Cpf não encontrado na Lista MV: ${localCpf}`)
             } // End If
-        })// End For Each
+        }// End For 
     } catch (error) {console.error(error)} // End Catch
 } //End CheckCpfIsCreated
 

@@ -22,7 +22,10 @@ async function serviceSendEmailHandler({smtpConfigId, email, var1, var2, var3, v
         } = emailConfig;
 
         // Load Var Data to MESSAGE_BODY
-        const MESSAGE_BODY_VAR = MESSAGE_BODY.replace("{{NOME}}", var1)
+        const MESSAGE_BODY_VAR1 = MESSAGE_BODY.replace("{{var1}}", var1)
+        const MESSAGE_BODY_VAR2 = MESSAGE_BODY_VAR1.replace("{{var2}}", var2)
+        const MESSAGE_BODY_VAR3 = MESSAGE_BODY_VAR2.replace("{{var3}}", var3)
+        const MESSAGE_BODY_VAR4 = MESSAGE_BODY_VAR3.replace("{{var4}}", var4)
 
         // Transporter
         const transporter = sendEmailModule.createTransport(
@@ -45,7 +48,7 @@ async function serviceSendEmailHandler({smtpConfigId, email, var1, var2, var3, v
                     html:msg });
                     console.log("email Sent!!")
         }
-        serviceSendEmail(email, MESSAGE_SUBJECT, MESSAGE_BODY_VAR)
+        serviceSendEmail(email, MESSAGE_SUBJECT, MESSAGE_BODY_VAR4)
     } catch (error) {console.log(error)} // End catch
 }; // End sendEmailHandler
 
