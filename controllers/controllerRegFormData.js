@@ -11,7 +11,7 @@ const regUser = async (req, resp ) => {
    console.log(req.body)
    const { USERNAME, BIRTHDATE, CPF, MOTHER_NAME, PHONE, EMAIL, CEP, ID_ROLE, ID_DEPARTMENT, USER_EXAMPLE } = req.body;
    const result = await regNewUser({
-       username: USERNAME,
+       username: USERNAME || null,
        birthdate: BIRTHDATE || null,
        cpf: CPF,  
        mother_name: MOTHER_NAME || null,

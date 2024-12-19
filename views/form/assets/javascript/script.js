@@ -46,13 +46,10 @@ document.getElementById('sendButton').addEventListener('click', function() {
         smtpConfigId: "1",
         email: document.getElementById('input-email').value,
         var1: document.getElementById('input-name').value
-
     }
     
     const jsonData = JSON.stringify(formData);
     const jsonEmailData = JSON.stringify(emailData)
-
-
 
     console.log(jsonData)
    
