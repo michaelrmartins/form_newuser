@@ -5,9 +5,9 @@ const { queryRegNewUser, queryRegNewRole, queryRegNewDepartment } = require("./q
 
 // Reg New User
 const regNewUser = async (userdata) => {
-    const {username, birthdate,cpf, mother_name, phone, cep, email, id_role, id_department, user_example} = userdata
+    const {username, birthdate,cpf, mother_name, phone, cep, email, id_role, id_department, role_reg_number, user_example} = userdata
     const [result] = await database.execute(queryRegNewUser,
-        [username, birthdate, cpf, mother_name, phone, cep, email, id_role, id_department, user_example])
+        [username, birthdate, cpf, mother_name, phone, cep, email, id_role, id_department, role_reg_number, user_example])
         return result;
 }
 

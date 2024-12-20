@@ -11,6 +11,8 @@ SELECT
     form.ID_DEPARTMENT,
     departments.NAME AS DEPARTMENT_NAME,
     form.ID_ROLE,
+    ROLE_REG_NUMBER,
+    USER_EXAMPLE,
     roles.ROLE_NAME,
     CASE
         WHEN form.IS_CREATED = 0 THEN 'Pendente'

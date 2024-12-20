@@ -1,6 +1,6 @@
 const queryRegNewUser = `
-INSERT INTO form_data (USERNAME, BIRTHDATE, CPF, MOTHER_NAME, PHONE, CEP, EMAIL, ID_ROLE, ID_DEPARTMENT, USER_EXAMPLE)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO form_data (USERNAME, BIRTHDATE, CPF, MOTHER_NAME, PHONE, CEP, EMAIL, ID_ROLE, ID_DEPARTMENT, ROLE_REG_NUMBER, USER_EXAMPLE)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
 `; // End
 
 const queryRegNewRole = `

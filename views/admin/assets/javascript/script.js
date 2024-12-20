@@ -33,6 +33,7 @@ function updateScreenValues(users) {
                 <th>Email</th>
                 <th>Setor</th>
                 <th>Especialidade</th>
+                <th>N° Conselho</th>
                 <th>Data da solicitação</th>
                 <th>Status</th>
                 <th>Primeiro login</th>
@@ -58,6 +59,7 @@ function updateScreenValues(users) {
                 <td>${user.EMAIL}</td>
                 <td>${user.DEPARTMENT_NAME}</td>
                 <td>${user.ROLE_NAME}</td>
+                <td>${user.ROLE_REG_NUMBER}</td>
                 <td>
                     ${new Date(user.CREATED_ON).toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: 'numeric'})},
                     ${new Date(user.CREATED_ON).toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: 'false'})}

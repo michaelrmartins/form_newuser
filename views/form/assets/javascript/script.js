@@ -39,7 +39,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
         CEP: sanitizedCep,
         ID_DEPARTMENT: document.getElementById('departments-names').value,
         ID_ROLE: document.getElementById('role-names').value,
-        REGISTERNUMBER: document.getElementById('input-register').value,
+        ROLE_REG_NUMBER: document.getElementById('input-register').value,
     };
 
     const emailData = {
