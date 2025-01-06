@@ -35,13 +35,16 @@ function updateScreenValues(users) {
     users.forEach(user => {
         // const isCreatedClass = user.IS_CREATED == 'Feito' ? 'status-done' : 'status-pending';
         // const isfirstloginClass = user.IS_FIRST_LOGIN == 'Feito' ? 'status-done' : 'status-pending';
+
+        const role_status_description = user.ROLE_STATUS == '1' ? 'Ativado' : 'Desativado'
+
         const row = `
             <tr>
                 <td id="td-username">${user.ROLE_NAME}</td>
                 <td id="td-username">${user.ROLE_DESCRIPTION}</td>
                 <td>${user.LICENCE_TYPE}</td>
                 <td>${user.LICENCE_DESCRIPTION}</td>
-                <td id="td-username">${user.ROLE_STATUS}</td>
+                <td id="td-username">${role_status_description}</td>
                 <td id="td-button-delete-row"><button onclick="deleteRoleRow(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">❌</button></td>
             </tr>
         `;
