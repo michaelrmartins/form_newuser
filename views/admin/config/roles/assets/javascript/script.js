@@ -45,7 +45,7 @@ function updateScreenValues(users) {
                 <td>${user.LICENCE_TYPE}</td>
                 <td>${user.LICENCE_DESCRIPTION}</td>
                 <td id="td-username">${role_status_description}</td>
-                <td id="td-button-delete-row"><button onclick="deleteRoleRow(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">❌</button></td>
+                <td id="td-button-delete-row"><button onclick="userConfirm(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">❌</button></td>
             </tr>
         `;
         tbody.innerHTML += row;
@@ -93,6 +93,13 @@ fetch('http://192.168.2.214:8059/api/roles', {
 });
 });
 
+    // User Confirm check
+    function userConfirm(value){
+    const userSelection = confirm("Confirma?");
+    if (userSelection == true ){
+            deleteRoleRow(value);
+        }
+}
 
 // Delete Archive Rows
 function deleteRoleRow(value) {

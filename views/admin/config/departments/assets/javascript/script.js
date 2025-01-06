@@ -41,7 +41,7 @@ function updateScreenValues(users) {
                 <td class="mother-name">${user.DESCRIPTION}</td>
                 <td>${user.TYPE}</td>
                 <td>${department_status_description}</td>
-                <td id="td-button-delete-row"><button onclick="deleteRoleRow(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">❌</button></td>
+                <td id="td-button-delete-row"><button onclick="userConfirm(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">❌</button></td>
            </tr>
         `;
         tbody.innerHTML += row;
@@ -87,9 +87,16 @@ document.getElementById('saveButton').addEventListener('click', function() {
         alert('FATAL - Ocorreu um erro ao enviar os dados. \nBACKEND ERROR\n\n' + error);
     });
     });
-        
+
+    function userConfirm(value){
+        const userSelection = confirm("Confirma?");
+        if (userSelection == true ){
+              deleteDepartmentRow(value);
+            }
+    }
+
     // Delete Archive Rows
-    function deleteRoleRow(value) {
+    function deleteDepartmentRow(value) {
         fetch(`http://192.168.2.214:8059/api/departments/${value}`, {
             method: 'DELETE',
             headers: {
