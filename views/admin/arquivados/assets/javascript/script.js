@@ -62,7 +62,7 @@ function updateScreenValues(users) {
                 <td class="${isCreatedClass}">${user.IS_CREATED}</td>
                 <td class="${isfirstloginClass}">${user.IS_FIRST_LOGIN}</td>
                 <td id="td-button-archive-row"><button onclick="removeFromArchiveRow(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">⬆</button></td>
-                <td id="td-button-delete-row"><button onclick="deleteArchiveRow(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">❌</button></td>
+                <td id="td-button-delete-row"><button onclick="userConfirm(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">❌</button></td>
             </tr>
         `;
         tbody.innerHTML += row;
@@ -83,6 +83,13 @@ function removeFromArchiveRow(value) {
     const row = document.querySelector(`button[data-id="${value}"]`).closest('tr');
     row.remove()
     console.log(value);
+}
+
+function userConfirm(value){
+    const userSelection = confirm("Confirma?");
+    if (userSelection == true ){
+            deleteArchiveRow(value);
+        }
 }
 
 // Delete Archive Rows
