@@ -6,7 +6,7 @@
     <link rel="icon" href="https://i0.wp.com/www.heaa.com.br/wp-content/uploads/2024/01/FAVICON.jpg?fit=18%2C18&amp;ssl=1" sizes="32x32">
     <link rel="icon" href="https://i0.wp.com/www.heaa.com.br/wp-content/uploads/2024/01/FAVICON.jpg?fit=18%2C18&amp;ssl=1" sizes="192x192">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="assets/javascript/script.js"></script>
+    <!-- <script src="assets/javascript/script.js"></script> -->
     <title>Configurações</title>
 </head>
 <body onload="getApiDataForm()">
@@ -22,10 +22,32 @@
         <a href="/admin/config/smtp">SMTP</a>
         <a href="/admin/config/users">Usuários</a>
     </div>
+
+        <!-- Div Menu New Department -->
+        <p>Cadastrar Novo Setor:</p>
+        <div class="div-menu-new-department">
+            <div class="div-infos-group">
+                <label for="input-name">Nome:</label>
+                <input type="text" id="input-name" name="input-name" >
+            </div>
+            <div class="div-infos-group">
+                <label for="input-name">Descrição:</label>
+                <input type="text" id="input-description" name="input-description" >
+            </div>
+            <div class="div-infos-group">
+                <label for="input-name">Tipo:</label>
+                <input type="text" id="input-department-type" name="input-type" >
+            </div>
+            <div class="div-save-button">
+                <button class="saveButton" id="saveButton">Salvar</button>
+                </div>
+        </div>
+
         <!-- Main Table -->
         <div class="div-main-table">
             <p id="username"></p>
         </div>
     <div id="userContainer"></div>
+    <script src="assets/javascript/script.js"></script>
 </body>
 </html>
