@@ -88,6 +88,7 @@ document.getElementById('saveButton').addEventListener('click', function() {
     });
     });
 
+    // User Confirm check
     function userConfirm(value){
         const userSelection = confirm("Confirma?");
         if (userSelection == true ){
