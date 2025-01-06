@@ -32,6 +32,7 @@ function updateScreenValues(users) {
                 <th>Email</th>
                 <th>Setor</th>
                 <th>Especialidade</th>
+                <th>N° Conselho</th>
                 <th>Status</th>
                 <th>Primeiro login</th>
                 <th id="td-text-archive-row">Restaurar</th>
@@ -57,6 +58,7 @@ function updateScreenValues(users) {
                 <td>${user.EMAIL}</td>
                 <td>${user.DEPARTMENT_NAME}</td>
                 <td>${user.ROLE_NAME}</td>
+                <td>${user.ROLE_REG_NUMBER}</td>
                 <td class="${isCreatedClass}">${user.IS_CREATED}</td>
                 <td class="${isfirstloginClass}">${user.IS_FIRST_LOGIN}</td>
                 <td id="td-button-archive-row"><button onclick="removeFromArchiveRow(${user.ID})" id="button-${user.ID}" data-id="${user.ID}">⬆</button></td>
