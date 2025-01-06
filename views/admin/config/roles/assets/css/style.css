@@ -69,6 +69,18 @@
     font-size: 17px;
 }
 
+/* New Role Menu */
+.div-menu-new-role-title{
+    border-radius: 5px;
+    width: 220px;
+    background-color: #ececec;
+}
+
+.menu-new-role-title{
+    text-align: center;
+    padding: 4px;
+}
+
 .div-menu-new-role {
     padding:10px;
     background-color: #ececec;
@@ -83,12 +95,33 @@ label {
 }
 
 input {
+    height: 18px;
     user-select: none;
     color: #000000;
     border-radius: 5px;
     background-color: #fafafa;
     /* background: none;: */
     border: none;
+}
+
+.saveButton {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 2px 4px;
+    color: #ffffff;
+    background-color: #0568d1;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.saveButton:hover {
+    background-color: #012d5c;
+}
+
+.div-save-button {
+    padding-left: 10px;
 }
 
 .div-container-top-menu a:hover {
