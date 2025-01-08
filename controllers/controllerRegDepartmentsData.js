@@ -11,9 +11,9 @@ const regDepartment = async (req, resp ) => {
    console.log(req.body)
    const { NAME, DESCRIPTION, TYPE } = req.body;
    const result = await regNewDepartment({
-       name: NAME,
-       description: DESCRIPTION || null,
-       type: TYPE || null,  
+       name: NAME || null,
+       description: DESCRIPTION || "",
+       type: TYPE || "",  
    });
    return resp.status(201).json({message: `message:Departments Registred Successfully`, result})
 } catch(error) {

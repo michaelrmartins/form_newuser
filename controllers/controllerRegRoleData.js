@@ -12,7 +12,7 @@ const regRole = async (req, resp ) => {
    const { ROLE_NAME, ROLE_DESCRIPTION, LICENCE_TYPE, LICENCE_DESCRIPTION } = req.body;
    const result = await regNewRole({
        role_name: ROLE_NAME || null,
-       role_description: ROLE_DESCRIPTION || null,
+       role_description: ROLE_DESCRIPTION || "",
        licence_type: LICENCE_TYPE || null,  
        licence_description: LICENCE_DESCRIPTION  || null,
    });
