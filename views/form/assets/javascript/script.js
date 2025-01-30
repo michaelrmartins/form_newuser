@@ -51,7 +51,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
     const jsonData = JSON.stringify(formData);
     const jsonEmailData = JSON.stringify(emailData)
 
-    console.log(jsonData)
+    // console.log(jsonData)
    
     fetch('http://192.168.2.214:8059/api/form', {
         method: 'POST',
@@ -63,8 +63,17 @@ document.getElementById('sendButton').addEventListener('click', function() {
     .then(response => response.json())
     .then(data => {
         if(data.error){
-            console.log("ocorreu um erro:", data)
-            alert(data.error.code + "\n" + data.error.message)
+            console.log("ocorreu um erro:", data.error.message)
+            if (data.error.message === "Column 'USERNAME' cannot be null") {var formatedMessage = "Você Precisa Preencher seu Nome"}
+            if (data.error.message === "Column 'MOTHER_NAME' cannot be null") {var formatedMessage = "Você Precisa Preencher o campo Nome da Mãe"}
+            if (data.error.message === "Column 'PHONE' cannot be null") {var formatedMessage = "Você Precisa Preencher o campo Telefone"}
+            if (data.error.message === "Column 'EMAIL' cannot be null") {var formatedMessage = "Você Precisa Preencher o campo Email"}
+            if (data.error.message === "Incorrect integer value: '' for column `cadastro_usuarios`.`form_data`.`ID_ROLE` at row 1") {var formatedMessage = "Escolha um Setor e uma Especialidade"}
+            
+            alert(formatedMessage)
+
+
+
         } else {
 
                 // Send Confirm Email
